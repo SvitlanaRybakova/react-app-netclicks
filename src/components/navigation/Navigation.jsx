@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { GiTrophyCup } from "react-icons/gi";
 import { FaTheaterMasks } from "react-icons/fa";
-import { VscHistory } from "react-icons/vsc";
+import { VscHistory, VscHome } from "react-icons/vsc";
+
 
 import { ratingLinks } from "../../constants/navLinks";
 
@@ -34,6 +35,12 @@ const Navigation = () => {
 					<span></span>
 				</div>
 				<ul className={styles.leftMenu__list}>
+					<li>
+						<NavLink to="/">
+							<VscHome />
+							<span>HOME</span>
+						</NavLink>
+					</li>
 					<li>
 						<NavLink to="/history">
 							<VscHistory />
