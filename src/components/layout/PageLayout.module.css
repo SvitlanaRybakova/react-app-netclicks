@@ -1,0 +1,9 @@
+.wrapper {
+  margin-left: 275px;
+  position: relative;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
