@@ -23,7 +23,7 @@ const searchBar = () => {
 						/>
 						<label
 							className={styles.search__formBlock}
-							for="searchText"
+							htmlFor="searchText"
 						></label>
 						<button type="submit">Search</button>
 					</form>

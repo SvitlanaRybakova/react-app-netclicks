@@ -1,9 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import PageLayout from "../../components/layout/PageLayout";
 import SearchBar from '../../components/search_bar/searchBar';
+import { useQuery } from "react-query";
+import { getPlayingMovies } from "../../services/ThemoviedbAPI";
 
 const HomePage = () => {
-	return (
+	const {
+		data,
+		error,
+		isError,
+		isFetching,
+		isLoading,
+		isPreviousData,
+	} = useQuery("home", () => getPlayingMovies(), {
+		staleTime: 1000 * 60 * 5, // 5 mins
+		cacheTime: 1000 * 60 * 30, // 30 mins
+		keepPreviousData: true, // keep previous data
+	});
+	return ( 
 		<>
 		<PageLayout>
 			<SearchBar />
