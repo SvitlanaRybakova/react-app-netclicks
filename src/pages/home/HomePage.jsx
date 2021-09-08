@@ -1,8 +1,12 @@
-import React, {useState} from "react";
-import PageLayout from "../../components/layout/PageLayout";
-import SearchBar from '../../components/search_bar/searchBar';
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
+
+import PageLayout from "../../components/layout/PageLayout";
+import SearchBar from "../../components/search_bar/searchBar";
 import { getPlayingMovies } from "../../services/ThemoviedbAPI";
+import MovieCard from "../../components/movie_card/MovieCard";
+import styles from './HomePage.module.css';
+
 
 const HomePage = () => {
 	const {
@@ -17,18 +21,26 @@ const HomePage = () => {
 		cacheTime: 1000 * 60 * 30, // 30 mins
 		keepPreviousData: true, // keep previous data
 	});
-	return ( 
+
+	if (data) {
+		console.log(data);
+	}
+	return (
 		<>
-		<PageLayout>
-			<SearchBar />
-			<h1>This is Home Page</h1>
-			<div>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				Repellendus eius nobis corrupti assumenda! Voluptates nobis
-				sapiente reiciendis. Facere nostrum soluta dicta quis eaque,
-				quae officia vitae pariatur doloremque. Dolorum, quidem?
-			</div>
-		</PageLayout>
+			{data?.results && (
+				<PageLayout>
+					<SearchBar />
+
+					<section>
+						<h3 className={styles.tvShows__head}>Playing now</h3>
+						<ul className={styles.tvShows__list}>
+							{data.results.map((movie) => (
+								<MovieCard key={movie.id} movie={movie}/>
+							))}
+						</ul>
+					</section>
+				</PageLayout>
+			)}
 		</>
 	);
 };
