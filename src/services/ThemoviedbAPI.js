@@ -3,18 +3,28 @@ import axios from "axios";
 const { VITE_API_KEY } = import.meta.env;
 const language = "&language=en-US";
 
-
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
-// the common function for getting data
+// the common function for getting data (collection and byId)
 const get = async (endpoint, page) => {
-	const res = await axios.get(
-		`${endpoint}?api_key=${VITE_API_KEY}${language}&page=${page}`
+  let result;
+	if (page) {
+		result = await axios.get(
+			`${endpoint}?api_key=${VITE_API_KEY}${language}&page=${page}`
+		);
+  }
+  
+	result = await axios.get(
+		`${endpoint}?api_key=${VITE_API_KEY}&append_to_response=credits`
 	);
-	return res.data;
+  return result.data;
 };
 
 // get data for Home page
-export const getPlayingMovies = async(page = null) => {
+export const getPlayingMovies = async (page = null) => {
 	return get(`/movie/now_playing`, page);
+};
+
+export const getMovieById = async (id) => {
+	return get(`/movie/${id}`);
 };

@@ -1,0 +1,104 @@
+.filmWrapper {
+  display: flex;
+  padding-top: 50px;
+}
+
+.poster {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.filmText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.filmTitle {
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 42px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #00838f;
+}
+
+.filmSibtitle {
+  box-sizing: border-box;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #A5A5A5;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+.filmSibtitle p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.filmDescripton {
+  font-size: 14px;
+  line-height: 150%;
+  max-width: 514px;
+  margin-bottom: 50px;
+}
+
+.aboutFilm {
+  margin-bottom: 50px;
+}
+
+.aboutFilm p {
+  margin-bottom: 10px;
+}
+
+.aboutText {
+  display: block;
+  flex-wrap: nowrap;
+  margin-bottom: 3px;
+}
+
+.genres {
+  text-transform: lowercase;
+}
+
+/* staff */
+
+.tabs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.tabsContent {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media(min-width: 768px) {
+  .tabsContent {
+    justify-content: space-between;
+  }
+}
+
+.tab {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  /* line-height: 28px; */
+  color: #00838f;
+  margin-right: 30px;
+  padding: 10px;
+  background-color: transparent;
+  /* text-decoration: none; */
+  cursor: pointer;
+  border: none;
+}
+
+.active {
+  font-weight: 900;
+  border-bottom: 1px solid #4dd0e1;
+}

@@ -1,0 +1,44 @@
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.ratingCounter {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: #00838f;
+  border: 1px solid #00838f;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+  margin-right: 28px;
+}
+
+.ratingTitle {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.ratingText {
+  display: block;
+  margin-bottom: 7px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #363636;
+}
+
+.ratingTextBold {
+  font-weight: bold;
+}

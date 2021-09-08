@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import {Alert} from 'react-bootstrap';
 
 import PageLayout from "../../components/layout/PageLayout";
+import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
 import SearchBar from "../../components/search_bar/searchBar";
 import { getPlayingMovies } from "../../services/ThemoviedbAPI";
 import MovieCard from "../../components/movie_card/MovieCard";
@@ -17,29 +18,16 @@ const HomePage = () => {
 		data,
 		error,
 		isError,
-		isFetching,
-		isLoading,
-		isPreviousData,
 	} = useQuery(["home", page], () => getPlayingMovies(page), {
 		staleTime: 1000 * 60 * 5, // 5 mins
 		cacheTime: 1000 * 60 * 30, // 30 mins
 		keepPreviousData: true, // keep previous data
 	});
 
-	if (data) {
-		console.log(data);
-		console.log(page);
-	}
+	
 	return (
 		<>
-			{isError && (
-				<PageLayout>
-					<Alert variant="warning" className="my-3">
-					<strong>Error:</strong> {error.message}
-				</Alert>
-				</PageLayout>
-
-			)}
+			{isError && <CustomErrorMessage  error={error}/>}
 			{data?.results && (
 				<PageLayout>
 					<SearchBar />

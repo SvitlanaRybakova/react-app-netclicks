@@ -1,6 +1,12 @@
 .wrapper {
-  margin-left: 275px;
+  margin-left: 60px;
   position: relative;
+}
+
+@media(min-width: 768px) {
+  .wrapper {
+    margin-left: 275px;
+  }
 }
 
 .container {

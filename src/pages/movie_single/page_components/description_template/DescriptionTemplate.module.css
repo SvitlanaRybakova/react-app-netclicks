@@ -1,0 +1,18 @@
+.aboutTextBold {
+  display: inline-block;
+  width: 130px;
+  vertical-align: top;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #363636;
+}
+
+.aboutTextRegular {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #363636;
+}

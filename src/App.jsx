@@ -8,6 +8,8 @@ import HomePage from "./pages/home/HomePage";
 import TopRatedPage from "./pages/rating/rating";
 import GenresPage from "./pages/genres/genres";
 import HistoryPage from "./pages/history/history";
+import MoviePage from './pages/movie_single/movie';
+import StaffPage from './pages/staff/staff'
 
 function App() {
 	return (
@@ -18,12 +20,20 @@ function App() {
 					<HomePage />
 				</Route>
 
+				<Route path="/movies/:movie_id">
+					<MoviePage />
+				</Route>
+
 				<Route path="/rating/:type?">
 					<TopRatedPage />
 				</Route>
 
 				<Route path="/genres/:type?">
 					<GenresPage />
+				</Route>
+
+				<Route path="/staff/:staff_id">
+					<StaffPage />
 				</Route>
 
 				<Route path="/history">

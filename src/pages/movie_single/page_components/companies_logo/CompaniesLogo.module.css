@@ -1,0 +1,28 @@
+.companiesLogo {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+@media(min-width: 768px) {
+  .companiesLogo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+}
+
+.imgWrapper {
+  padding: 20px;
+  max-width: 150px;
+}
+
+.companyName {
+  font-style: italic;
+  line-height: 1rem;
+  color: gray;
+}

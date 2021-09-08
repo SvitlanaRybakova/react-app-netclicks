@@ -1,0 +1,34 @@
+.card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  flex-basis: 100%;
+}
+
+@media(min-width: 768px) {
+  .card {
+    flex-basis: calc((100% / 2) - 2rem);
+  }
+}
+
+@media(min-width: 1200px) {
+  .card {
+    flex-basis: calc((100% / 3) - 2rem);
+  }
+}
+
+.cardImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cardName {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #00838f;
+  margin-left: 20px;
+}

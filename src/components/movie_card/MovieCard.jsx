@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./MovieCard.module.css";
+import {IMG_URL_185} from '../../constants/constants'
 
 const MovieCard = ({ movie }) => {
-	const IMG_URL = "https://image.tmdb.org/t/p/w185_and_h278_bestv2";
+	
 	const [isShown, setIsShown] = useState(false);
 
 	return (
@@ -20,8 +21,8 @@ const MovieCard = ({ movie }) => {
 					className={styles.tvCard__img}
 					src={
 						isShown
-							? `${IMG_URL}${movie.backdrop_path}`
-							: `${IMG_URL}${movie.poster_path}`
+							? `${IMG_URL_185}${movie.backdrop_path}`
+							: `${IMG_URL_185}${movie.poster_path}`
 					}
 					alt={movie.title}
 				/>
