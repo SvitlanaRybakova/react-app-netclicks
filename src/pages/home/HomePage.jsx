@@ -13,7 +13,7 @@ import styles from './HomePage.module.css';
 
 const HomePage = () => {
 	const [page, setPage] = useState(1);
-
+console.log("page",page);
 	const {
 		data,
 		error,

@@ -6,12 +6,12 @@ import { Row, Col } from "react-bootstrap";
 import PageLayout from "../../components/layout/PageLayout";
 import BackButton from "../../components/back_button/BackButton";
 import DescriptionTemplate from "../../components/description_template/DescriptionTemplate";
-import CustomErrorMessage from '../../components/error_message/CustomErrorMessage';
-import TabContent from '../../components/tab_content/TabContent'
-import noImg from '../../assets/images/noImg.png'
+import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
+import TabContent from "../../components/tab_content/TabContent";
+import noImg from "../../assets/images/noImg.png";
 import { getPersonById } from "../../services/ThemoviedbAPI";
 import { IMG_URL_500 } from "../../constants/constants";
-import {getAge} from '../../services/utils'
+import { getAge } from "../../services/utils";
 import styles from "./staff.module.css";
 
 const staff = () => {
@@ -25,11 +25,6 @@ const staff = () => {
 			keepPreviousData: true, // keep previous data
 		}
 	);
-	if (data) {
-		console.log(data);
-	}
-
- 
 
 	return (
 		<>
@@ -75,7 +70,7 @@ const staff = () => {
 
 					<Row>
 						<h2>Films</h2>
-           <TabContent data={data} moviePage={false}/>
+						<TabContent data={data} moviePage={false} />
 					</Row>
 				</PageLayout>
 			)}

@@ -24,11 +24,21 @@
   border-radius: 50%;
 }
 
+.cardWrapper {
+  margin-left: 20px;
+}
+
+.cardWrapper h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: black;
+}
+
 .cardName {
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 19px;
   color: #00838f;
-  margin-left: 20px;
+  margin-bottom: 15px;
 }

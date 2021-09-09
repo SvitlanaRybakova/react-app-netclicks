@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './DescriptionTemplate.module.css'
+import React from "react";
+import styles from "./DescriptionTemplate.module.css";
 
 const DescriptionTemplate = ({
 	title,
@@ -54,4 +54,4 @@ const DescriptionTemplate = ({
 	);
 };
 
-export default DescriptionTemplate
+export default DescriptionTemplate;

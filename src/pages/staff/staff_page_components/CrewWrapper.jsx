@@ -1,17 +1,18 @@
 import React from "react";
 import CastCard from "./CastCard";
 
-const CastWrapper = ({ castData }) => {
+const CrewWrapper = ({ crewData }) => {
 	return (
 		<>
-			{castData.length > 0 ? (
-				castData.map((person) => (
+			{crewData.length > 0 ? (
+				crewData.map((person) => (
 					<CastCard
 						key={person.id}
 						id={person.id}
 						posterPath={person.poster_path}
 						title={person.title}
 						character={person.character}
+						job={person.job}
 					/>
 				))
 			) : (
@@ -23,4 +24,4 @@ const CastWrapper = ({ castData }) => {
 	);
 };
 
-export default CastWrapper;
+export default CrewWrapper;

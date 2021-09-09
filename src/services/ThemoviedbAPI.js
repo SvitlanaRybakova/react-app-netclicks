@@ -12,6 +12,7 @@ const get = async (endpoint, page) => {
 		result = await axios.get(
 			`${endpoint}?api_key=${VITE_API_KEY}${language}&page=${page}`
 		);
+		return result.data;
   }
   // get specific data
 	result = await axios.get(
