@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 
@@ -6,17 +6,17 @@ import CustomErrorMessage from "../../components/error_message/CustomErrorMessag
 import CompaniesLogo from "./page_components/companies_logo/CompaniesLogo";
 import Rating from "./page_components/rating_component/Rating";
 import PageLayout from "../../components/layout/PageLayout";
-import DescriptionTemplate from "../../components/description_template/DescriptionTemplate"
-import TabContent from '../../components/tab_content/TabContent'
-import BackButton from '../../components/back_button/BackButton'
+import DescriptionTemplate from "../../components/description_template/DescriptionTemplate";
+import TabContent from "../../components/tab_content/TabContent";
+import BackButton from "../../components/back_button/BackButton";
+import Image from '../../components/image/Image'
 
 import { getMovieById } from "../../services/ThemoviedbAPI";
 import styles from "./movie.module.css";
 import { Col, Row } from "react-bootstrap";
-import {IMG_URL_500} from '../../constants/constants'
+import { IMG_URL_500 } from "../../constants/constants";
 
 const movie = () => {
-
 	const { movie_id } = useParams();
 	const { data, error, isError } = useQuery(
 		["single-movie", movie_id],
@@ -36,11 +36,7 @@ const movie = () => {
 					<BackButton />
 					<Row className={styles.filmWrapper}>
 						<Col md={5}>
-							<img
-								src={`${IMG_URL_500}${data.poster_path}`}
-								alt={data.title}
-								className={styles.poster}
-							/>
+							<Image poster={data.poster_path} alt={data.title} bigImg={true} className={styles.poster}/>
 						</Col>
 
 						<Col className={styles.filmText}>
@@ -63,10 +59,12 @@ const movie = () => {
 									items={data.production_countries}
 								/>
 
-								<DescriptionTemplate
-									title={"Budget:"}
-									budget={data.budget}
-								/>
+								{data.budget !== 0 && (
+									<DescriptionTemplate
+										title={"Budget:"}
+										budget={data.budget}
+									/>
+								)}
 
 								<DescriptionTemplate
 									title={"Premiere:"}
@@ -83,7 +81,7 @@ const movie = () => {
 
 					<CompaniesLogo companies={data.production_companies} />
 
-					<TabContent data={data} moviePage={true}/>
+					<TabContent data={data} moviePage={true} />
 				</PageLayout>
 			)}
 		</>

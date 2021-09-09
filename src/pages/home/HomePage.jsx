@@ -14,7 +14,7 @@ const HomePage = () => {
 	const [page, setPage] = useState(1);
 	const [searchText, setSearchText] = useState("");
 	const [query, setQuery] = useState(null);
-	const { data, error, isError } = useQuery(
+	const { data, error, isError, isLoading } = useQuery(
 		["home", page, query],
 		() => getMovie(page, query),
 		{
@@ -31,15 +31,15 @@ const HomePage = () => {
 	}, [searchText]);
 
 
+
+
 	return (
 		<>
 			{isError && <CustomErrorMessage error={error} />}
+			{isLoading && <p>LOading...</p>}
 			{data?.results && (
 				<PageLayout>
-					<SearchBar
-						setSearchText={setSearchText}
-						// handleSubmit={handleSubmit}
-					/>
+					<SearchBar setSearchText={setSearchText} />
 
 					<section>
 						<h3 className={styles.tvShows__head}>Playing now</h3>

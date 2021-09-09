@@ -68,8 +68,7 @@ const staff = () => {
 						</Col>
 					</Row>
 
-					<Row>
-						<h2>Films</h2>
+					<Row className="my-5">
 						<TabContent data={data} moviePage={false} />
 					</Row>
 				</PageLayout>

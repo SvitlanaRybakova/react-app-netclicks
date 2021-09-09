@@ -12,11 +12,12 @@ const searchBar = ({ setSearchText, handleSubmit }) => {
 				</hgroup>
 
 				<section className={styles.search}>
-					<form className={styles.search__form}>
+					<form onSubmit={(e)=> e.preventDefault()}
+					className={styles.search__form}>
 						<h2 className={styles.search__formHead}>Search</h2>
 
 						<input
-							onChange={(e) => setSearchText(e.target.value)}
+							onChange={(e) => {setSearchText(e.target.value)}}
 							type="text"
 							className={styles.search__formInput}
 							name="searchText"
