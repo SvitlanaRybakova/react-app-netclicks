@@ -9,15 +9,15 @@ import PageLayout from "../../components/layout/PageLayout";
 import DescriptionTemplate from "../../components/description_template/DescriptionTemplate";
 import TabContent from "../../components/tab_content/TabContent";
 import BackButton from "../../components/back_button/BackButton";
-import Image from '../../components/image/Image'
-
+import Image from "../../components/image/Image";
+import Spinner from "../../components/spinner/Spinner";
 import { getMovieById } from "../../services/ThemoviedbAPI";
 import styles from "./movie.module.css";
 import { Col, Row } from "react-bootstrap";
 
 const movie = () => {
 	const { movie_id } = useParams();
-	const { data, error, isError } = useQuery(
+	const { data, error, isError, isLoading } = useQuery(
 		["single-movie", movie_id],
 		() => getMovieById(movie_id),
 		{
@@ -30,12 +30,18 @@ const movie = () => {
 	return (
 		<>
 			{isError && <CustomErrorMessage error={error} />}
+			{isLoading && <Spinner />}
 			{data && (
 				<PageLayout>
 					<BackButton />
 					<Row className={styles.filmWrapper}>
 						<Col md={5}>
-							<Image poster={data.poster_path} alt={data.title} bigImg={true} className={styles.poster}/>
+							<Image
+								poster={data.poster_path}
+								alt={data.title}
+								bigImg={true}
+								className={styles.poster}
+							/>
 						</Col>
 
 						<Col className={styles.filmText}>

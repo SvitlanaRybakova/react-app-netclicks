@@ -7,6 +7,7 @@ import PageLayout from "../../components/layout/PageLayout";
 import BackButton from "../../components/back_button/BackButton";
 import DescriptionTemplate from "../../components/description_template/DescriptionTemplate";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
+import Spinner from "../../components/spinner/Spinner";
 import TabContent from "../../components/tab_content/TabContent";
 import noImg from "../../assets/images/noImg.png";
 import { getPersonById } from "../../services/ThemoviedbAPI";
@@ -16,7 +17,7 @@ import styles from "./staff.module.css";
 
 const staff = () => {
 	const { staff_id } = useParams();
-	const { data, error, isError } = useQuery(
+	const { data, error, isError, isLoading } = useQuery(
 		["staff-page", staff_id],
 		() => getPersonById(staff_id),
 		{
@@ -29,6 +30,7 @@ const staff = () => {
 	return (
 		<>
 			{isError && <CustomErrorMessage error={error} />}
+			{isLoading && <Spinner />}
 			{data && (
 				<PageLayout>
 					<BackButton />

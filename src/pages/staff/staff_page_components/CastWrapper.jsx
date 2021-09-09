@@ -1,6 +1,8 @@
 import React from "react";
-import CastCard from "./CastCard";
 import { v4 as uuidv4 } from "uuid";
+
+import CastCard from "./CastCard";
+import NoData from "../../../components/no_matches/NoMatches";
 
 const CastWrapper = ({ castData }) => {
 	return (
@@ -16,9 +18,9 @@ const CastWrapper = ({ castData }) => {
 					/>
 				))
 			) : (
-				<h4 style={{ color: "#A5A5A5" }}>
-					No matches to show ¯\_(ツ)_/¯
-				</h4>
+				<div style={{ maxWidth: "300px" }}>
+					<NoData />
+				</div>
 			)}
 		</>
 	);

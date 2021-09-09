@@ -12,7 +12,6 @@ const Image = ({ isShown, backdrop, poster, title, bigImg }) => {
 					style={{
 						height: "278px",
 						width: "185px",
-						border: "1px solid red",
 					}}
 					src={`${IMG_URL_185}${poster}`}
 					alt={title}

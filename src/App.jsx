@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Container } from "react-bootstrap";
 
 import Navigation from "./components/navigation/Navigation";
 import PageNotFound from "./pages/not_found/notFound";
@@ -10,6 +9,7 @@ import GenresPage from "./pages/genres/genres";
 import HistoryPage from "./pages/history/history";
 import MoviePage from './pages/movie_single/movie';
 import StaffPage from './pages/staff/staff'
+
 
 function App() {
 	return (

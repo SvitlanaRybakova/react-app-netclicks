@@ -1,9 +1,5 @@
 @import "bootstrap/scss/bootstrap";
 
-html, body, #root, .App, .container, #clock-wrapper {
-	min-height: 100vh;
-}
-
 
 @font-face {
   font-family: "Museo Sans";
@@ -64,32 +60,9 @@ h1, h2, h3, h4, p {
   margin: 0;
 }
 
-
-
-// hiden property
-// .visually-hidden {
-//     position: absolute !important;
-//     clip: rect(1px 1px 1px 1px);
-//     clip: rect(1px, 1px, 1px, 1px);
-//     padding: 0 !important;
-//     border: 0 !important;
-//     height: 1px !important;
-//     width: 1px !important;
-//     overflow: hidden;
-// }
-
-// .clearfix::after {
-//     content: "";
-//     display: table;
-//     clear: both;
-// }
-
-// .hide {
-//     display: none !important;
-// }
-
-// .container {
-//     max-width: 1000px;
-//     margin: 0 auto;
-//     padding: 0 30px;
-// }
+.spinnerWrapper {
+margin: 0 auto;
+ max-width: 100px;
+ min-height: 150px;
+ margin-top: 150px;
+}
