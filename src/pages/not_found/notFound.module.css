@@ -1,0 +1,18 @@
+.wrapper {
+  max-width: 400px;
+  margin: 70px auto;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 8px;
+  color: #ffff;
+  margin: 0 auto;
+  background-color: #00838f;
+  padding: 15px 20px;
+}
+
+.button:hover {
+  color: #ffff;
+  background-color: #4dd0e1;
+}
