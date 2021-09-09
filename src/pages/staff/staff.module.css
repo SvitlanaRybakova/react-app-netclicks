@@ -1,4 +1,4 @@
-.filmWrapper {
+.staffWrapper {
   display: flex;
   padding-top: 50px;
 }
@@ -8,13 +8,16 @@
   border-top-left-radius: 5px;
 }
 
-.filmText {
+.staffDescription {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-.filmTitle {
+.personDescriprion {
+  margin-bottom: 20px;
+}
+
+.title {
   font-weight: 900;
   font-size: 36px;
   line-height: 42px;
@@ -23,7 +26,7 @@
   color: #00838f;
 }
 
-.filmSibtitle {
+.subtitle {
   box-sizing: border-box;
   font-style: normal;
   font-weight: normal;
@@ -34,33 +37,6 @@
   margin-bottom: 50px;
 }
 
-.filmSibtitle p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.filmDescripton {
-  font-size: 14px;
-  line-height: 150%;
-  max-width: 514px;
+.aboutPerson {
   margin-bottom: 50px;
 }
-
-.aboutFilm {
-  margin-bottom: 50px;
-}
-
-.aboutFilm p {
-  margin-bottom: 10px;
-}
-
-.aboutText {
-  display: block;
-  flex-wrap: nowrap;
-  margin-bottom: 3px;
-}
-
-.genres {
-  text-transform: lowercase;
-}
-

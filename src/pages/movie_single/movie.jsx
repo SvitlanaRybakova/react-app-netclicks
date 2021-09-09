@@ -6,9 +6,8 @@ import CustomErrorMessage from "../../components/error_message/CustomErrorMessag
 import CompaniesLogo from "./page_components/companies_logo/CompaniesLogo";
 import Rating from "./page_components/rating_component/Rating";
 import PageLayout from "../../components/layout/PageLayout";
-import DescriptionTemplate from "./page_components/description_template/DescriptionTemplate"
-import Cast from './page_components/cast/Cast';
-import Crew from './page_components/crew/Crew';
+import DescriptionTemplate from "../../components/description_template/DescriptionTemplate"
+import TabContent from '../../components/tab_content/TabContent'
 import BackButton from '../../components/back_button/BackButton'
 
 import { getMovieById } from "../../services/ThemoviedbAPI";
@@ -17,7 +16,7 @@ import { Col, Row } from "react-bootstrap";
 import {IMG_URL_500} from '../../constants/constants'
 
 const movie = () => {
-	const [isCastOpen, setCast] = useState(true)
+
 	const { movie_id } = useParams();
 	const { data, error, isError } = useQuery(
 		["single-movie", movie_id],
@@ -28,9 +27,7 @@ const movie = () => {
 			keepPreviousData: true, // keep previous data
 		}
 	);
-	if(data){
-		console.log(data)
-	}
+
 	return (
 		<>
 			{isError && <CustomErrorMessage error={error} />}
@@ -86,35 +83,7 @@ const movie = () => {
 
 					<CompaniesLogo companies={data.production_companies} />
 
-					<div className={styles.tabs}>
-						<button
-							className={
-								!isCastOpen
-									? `${styles.tab}`
-									: `${styles.tab} ${styles.active}`
-							}
-							onClick={() => setCast(true)}
-						>
-							Cast
-						</button>
-						<button
-							className={
-								isCastOpen
-									? `${styles.tab}`
-									: `${styles.tab} ${styles.active}`
-							}
-							onClick={() => setCast(false)}
-						>
-							Crew
-						</button>
-					</div>
-					<div className={styles.tabsContent}>
-						{isCastOpen ? (
-							<Cast castData={data.credits.cast} />
-						) : (
-							<Crew crewData={data.credits.crew} />
-						)}
-					</div>
+					<TabContent data={data} moviePage={true}/>
 				</PageLayout>
 			)}
 		</>

@@ -1,8 +1,13 @@
 import React from 'react'
 import styles from './DescriptionTemplate.module.css'
 
-const DescriptionTemplate = ({title, items, budget, releaseDate}) => {
-
+const DescriptionTemplate = ({
+	title,
+	items,
+	budget,
+	releaseDate,
+	birthPlace,
+}) => {
 	// show budget in friendly set
 	const showBudget = (budget) => {
 		const price = String(budget);
@@ -15,8 +20,8 @@ const DescriptionTemplate = ({title, items, budget, releaseDate}) => {
 			//add a space as a separator in integers
 			return price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
 		}
-  };
-  
+	};
+
 	return (
 		<p>
 			<strong className={styles.aboutTextBold}>{title}</strong>
@@ -42,8 +47,11 @@ const DescriptionTemplate = ({title, items, budget, releaseDate}) => {
 					})}
 				</span>
 			)}
+			{birthPlace && (
+				<span className={styles.aboutTextRegular}>{birthPlace}</span>
+			)}
 		</p>
 	);
-}
+};
 
 export default DescriptionTemplate

@@ -13,7 +13,7 @@ const get = async (endpoint, page) => {
 			`${endpoint}?api_key=${VITE_API_KEY}${language}&page=${page}`
 		);
   }
-  
+  // get specific data
 	result = await axios.get(
 		`${endpoint}?api_key=${VITE_API_KEY}&append_to_response=credits`
 	);
@@ -28,3 +28,7 @@ export const getPlayingMovies = async (page = null) => {
 export const getMovieById = async (id) => {
 	return get(`/movie/${id}`);
 };
+
+export const getPersonById = async(id) => {
+	return get(`/person/${id}`);
+}

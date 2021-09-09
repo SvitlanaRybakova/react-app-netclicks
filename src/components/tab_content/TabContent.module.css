@@ -1,0 +1,36 @@
+/* staff */
+
+.tabs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.tabsContent {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media(min-width: 768px) {
+  .tabsContent {
+    justify-content: space-between;
+  }
+}
+
+.tab {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #00838f;
+  margin-right: 30px;
+  padding: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.active {
+  font-weight: 900;
+  border-bottom: 1px solid #4dd0e1;
+}
