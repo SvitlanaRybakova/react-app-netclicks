@@ -5,31 +5,45 @@ const language = "&language=en-US";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
-// the common function for getting data (collection and byId)
-const get = async (endpoint, page) => {
-  let result;
-	if (page) {
+// для получения коллекций и поиска
+const get = async (endpoint, page, query) => {
+	let result;
+
+	if (query) {
 		result = await axios.get(
-			`${endpoint}?api_key=${VITE_API_KEY}${language}&page=${page}`
+			`${endpoint}?api_key=${VITE_API_KEY}&query=${query}&page=${page}`
 		);
+		console.log(result.data);
 		return result.data;
-  }
-  // get specific data
+	}
+
 	result = await axios.get(
-		`${endpoint}?api_key=${VITE_API_KEY}&append_to_response=credits`
+		`${endpoint}?api_key=${VITE_API_KEY}${language}&page=${page}`
 	);
-  return result.data;
+
+	return result.data;
 };
 
-// get data for Home page
-export const getPlayingMovies = async (page = null) => {
+// get specific data with append to response
+const getById = async (endpoint) => {
+	const result = await axios.get(
+		`${endpoint}?api_key=${VITE_API_KEY}&append_to_response=credits`
+	);
+	return await result.data;
+};
+
+
+export const getMovie = async (page = null, query = null) => {
+	if (query) {
+		return get(`/search/movie`, page, query);
+	}
 	return get(`/movie/now_playing`, page);
 };
 
 export const getMovieById = async (id) => {
-	return get(`/movie/${id}`);
+	return getById(`/movie/${id}`);
 };
 
-export const getPersonById = async(id) => {
-	return get(`/person/${id}`);
-}
+export const getPersonById = async (id) => {
+	return getById(`/person/${id}`);
+};

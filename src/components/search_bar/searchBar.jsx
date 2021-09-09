@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./searchBar.module.css";
-// import { Container } from "react-bootstrap";
 
-const searchBar = () => {
+
+const searchBar = ({ setSearchText, handleSubmit }) => {
 	return (
 		<div>
 			<div className={styles.headerFlex}>
@@ -16,6 +16,7 @@ const searchBar = () => {
 						<h2 className={styles.search__formHead}>Search</h2>
 
 						<input
+							onChange={(e) => setSearchText(e.target.value)}
 							type="text"
 							className={styles.search__formInput}
 							name="searchText"
@@ -25,7 +26,9 @@ const searchBar = () => {
 							className={styles.search__formBlock}
 							htmlFor="searchText"
 						></label>
-						<button type="submit">Search</button>
+						{/* <button onClick={(e)=>handleSubmit(e)} type="submit">
+							Search
+						</button> */}
 					</form>
 				</section>
 			</div>

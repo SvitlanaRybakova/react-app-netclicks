@@ -1,35 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { v4 as uuidv4 } from "uuid";
 
 import PageLayout from "../../components/layout/PageLayout";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
 import SearchBar from "../../components/search_bar/searchBar";
-import { getPlayingMovies } from "../../services/ThemoviedbAPI";
+import { getMovie } from "../../services/ThemoviedbAPI";
 import MovieCard from "../../components/movie_card/MovieCard";
-import Pagination from '../../components/pagination/PaginationBasic'
-import styles from './HomePage.module.css';
-
+import Pagination from "../../components/pagination/PaginationBasic";
+import styles from "./HomePage.module.css";
 
 const HomePage = () => {
 	const [page, setPage] = useState(1);
-	const {
-		data,
-		error,
-		isError,
-	} = useQuery(["home", page], () => getPlayingMovies(page), {
-		staleTime: 1000 * 60 * 5, // 5 mins
-		cacheTime: 1000 * 60 * 30, // 30 mins
-		keepPreviousData: true, // keep previous data
-	});
+	const [searchText, setSearchText] = useState("");
+	const [query, setQuery] = useState(null);
+	const { data, error, isError } = useQuery(
+		["home", page, query],
+		() => getMovie(page, query),
+		{
+			staleTime: 1000 * 60 * 5, // 5 mins
+			cacheTime: 1000 * 60 * 30, // 30 mins
+			keepPreviousData: true, // keep previous data
+		}
+	);
 
-	
+	useEffect(() => {
+		setTimeout(() => {
+			setQuery(searchText);
+		}, 1000);
+	}, [searchText]);
+
+
 	return (
 		<>
 			{isError && <CustomErrorMessage error={error} />}
 			{data?.results && (
 				<PageLayout>
-					<SearchBar />
+					<SearchBar
+						setSearchText={setSearchText}
+						// handleSubmit={handleSubmit}
+					/>
 
 					<section>
 						<h3 className={styles.tvShows__head}>Playing now</h3>
