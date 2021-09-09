@@ -1,5 +1,6 @@
 import React from "react";
 import CastCard from "./CastCard";
+import { v4 as uuidv4 } from "uuid";
 
 const CastWrapper = ({ castData }) => {
 	return (
@@ -7,7 +8,7 @@ const CastWrapper = ({ castData }) => {
 			{castData.length > 0 ? (
 				castData.map((person) => (
 					<CastCard
-						key={person.id}
+						key={uuidv4()}
 						id={person.id}
 						posterPath={person.poster_path}
 						title={person.title}

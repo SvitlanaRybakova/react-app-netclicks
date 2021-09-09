@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./DescriptionTemplate.module.css";
+import { v4 as uuidv4 } from "uuid";
 
 const DescriptionTemplate = ({
 	title,
@@ -26,9 +27,9 @@ const DescriptionTemplate = ({
 		<p>
 			<strong className={styles.aboutTextBold}>{title}</strong>
 
-			{Array.isArray(items) &&
-				items.map((item, i) => (
-					<span key={i} className={styles.aboutTextRegular}>
+			{items &&
+				items.map((item) => (
+					<span key={uuidv4()} className={styles.aboutTextRegular}>
 						&nbsp;&bull; {item.name}
 					</span>
 				))}

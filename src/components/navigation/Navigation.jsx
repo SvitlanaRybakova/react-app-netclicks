@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import { GiTrophyCup } from "react-icons/gi";
 import { FaTheaterMasks } from "react-icons/fa";
 import { VscHistory, VscHome } from "react-icons/vsc";
@@ -64,8 +65,8 @@ const Navigation = () => {
 							<span>RATING</span>
 						</NavLink>
 						<ul className={styles.dropdownList}>
-							{ratingLinks.map((link) => (
-								<li key={link.id}>
+							{ratingLinks.map(link => (
+								<li key={uuidv4()}>
 									<NavLink to={link.link}>
 										<span>{link.name}</span>
 									</NavLink>

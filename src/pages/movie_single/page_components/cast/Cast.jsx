@@ -1,13 +1,14 @@
-import React from 'react'
-import StaffCard from "../cast_crew_card/StaffCard";
+import React from 'react';
+import { v4 as uuidv4 } from "uuid";
 
+import StaffCard from "../cast_crew_card/StaffCard";
 
 const Cast = ({castData}) => {
   return (
 		<>
-			{castData.map((cast, i) => (
+			{castData.map(cast => (
 				<StaffCard
-					key={cast.id}
+					key={uuidv4()}
 					imagePath={cast.profile_path}
 					name={cast.original_name}
 					staff_id={cast.id}

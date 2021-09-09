@@ -1,4 +1,6 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import StaffCard from "../cast_crew_card/StaffCard";
 
 const Crew = ({ crewData }) => {
@@ -6,10 +8,10 @@ const Crew = ({ crewData }) => {
 		<>
 			{crewData.map((crew) => (
 				<StaffCard
-					key={crew.id}
+					key={uuidv4()}
 					imagePath={crew.profile_path}
-          name={crew.original_name}
-          staff_id={crew.id}
+					name={crew.original_name}
+					staff_id={crew.id}
 				/>
 			))}
 		</>
