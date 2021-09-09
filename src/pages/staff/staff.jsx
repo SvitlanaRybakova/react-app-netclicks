@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Row, Col } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 import PageLayout from "../../components/layout/PageLayout";
 import BackButton from "../../components/back_button/BackButton";
@@ -29,6 +30,9 @@ const staff = () => {
 
 	return (
 		<>
+			<Helmet>
+				<title>Netclicks | Person</title>
+			</Helmet>
 			{isError && <CustomErrorMessage error={error} />}
 			{isLoading && <Spinner />}
 			{data && (

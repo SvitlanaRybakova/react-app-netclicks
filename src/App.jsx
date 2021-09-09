@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
+
 import Navigation from "./components/navigation/Navigation";
 import PageNotFound from "./pages/not_found/notFound";
 import HomePage from "./pages/home/HomePage";
@@ -14,6 +15,7 @@ import StaffPage from './pages/staff/staff'
 function App() {
 	return (
 		<div className="App">
+		
 			<Navigation />
 			<Switch>
 				<Route exact path="/">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { v4 as uuidv4 } from "uuid";
+import { Helmet } from "react-helmet";
 
 import PageLayout from "../../components/layout/PageLayout";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
@@ -39,6 +40,9 @@ const HomePage = () => {
 
 	return (
 		<>
+			<Helmet>
+				<title>Netclicks | Home</title>
+			</Helmet>
 			{isError && <CustomErrorMessage error={error} />}
 			{isLoading && <Spinner />}
 			{data?.results && (
