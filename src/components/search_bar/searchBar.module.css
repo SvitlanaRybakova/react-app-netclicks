@@ -1,6 +1,12 @@
-
 .titleWrapper {
   margin-right: 40px;
+  display: none;
+}
+
+@media(min-width: 886px) {
+  .titleWrapper {
+    display: block;
+  }
 }
 
 .title {

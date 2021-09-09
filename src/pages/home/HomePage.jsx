@@ -42,7 +42,7 @@ const HomePage = () => {
 					<SearchBar setSearchText={setSearchText} />
 
 					<section>
-						<h3 className={styles.tvShows__head}>Playing now</h3>
+					
 						<ul className={styles.tvShows__list}>
 							{data.results.map((movie) => (
 								<MovieCard key={uuidv4()} movie={movie} />

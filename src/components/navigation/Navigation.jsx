@@ -5,7 +5,6 @@ import { GiTrophyCup } from "react-icons/gi";
 import { FaTheaterMasks } from "react-icons/fa";
 import { VscHistory, VscHome } from "react-icons/vsc";
 
-
 import { ratingLinks } from "../../constants/navLinks";
 
 import styles from "./Navigation.module.css";
@@ -65,7 +64,7 @@ const Navigation = () => {
 							<span>RATING</span>
 						</NavLink>
 						<ul className={styles.dropdownList}>
-							{ratingLinks.map(link => (
+							{ratingLinks.map((link) => (
 								<li key={uuidv4()}>
 									<NavLink to={link.link}>
 										<span>{link.name}</span>

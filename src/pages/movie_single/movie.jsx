@@ -14,7 +14,6 @@ import Image from '../../components/image/Image'
 import { getMovieById } from "../../services/ThemoviedbAPI";
 import styles from "./movie.module.css";
 import { Col, Row } from "react-bootstrap";
-import { IMG_URL_500 } from "../../constants/constants";
 
 const movie = () => {
 	const { movie_id } = useParams();

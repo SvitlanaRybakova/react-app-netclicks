@@ -3,6 +3,7 @@
 }
 
 .tvShows__list {
+  margin-top: 60px;
   display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fill, 185px);

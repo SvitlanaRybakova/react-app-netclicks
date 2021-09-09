@@ -6,7 +6,7 @@ const CrewWrapper = ({ crewData }) => {
 	return (
 		<>
 			{crewData.length > 0 ? (
-				crewData.map(person => (
+				crewData.map((person) => (
 					<CastCard
 						key={uuidv4()}
 						id={person.id}

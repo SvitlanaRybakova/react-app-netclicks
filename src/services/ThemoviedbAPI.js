@@ -8,7 +8,7 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3";
 // for get films colection or search-resalt
 const get = async (endpoint, page, query) => {
 	let result;
-// multi language search
+	// multi language search
 	if (query) {
 		result = await axios.get(
 			`${endpoint}?api_key=${VITE_API_KEY}&query=${query}&page=${page}`

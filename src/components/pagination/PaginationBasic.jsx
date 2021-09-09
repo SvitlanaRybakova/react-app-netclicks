@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
 import { Button } from "react-bootstrap";
 
-const PaginationBasic = ({page, setPage, totalPages}) => {
-
-  return (
+const PaginationBasic = ({ page, setPage, totalPages }) => {
+	return (
 		<div className="d-flex justify-content-between align-items-center m-5">
 			<Button
 				onClick={() =>
@@ -22,12 +21,12 @@ const PaginationBasic = ({page, setPage, totalPages}) => {
 						setPage((currentPage) => currentPage + 1);
 					}
 				}}
-				disabled={page===totalPages}
+				disabled={page === totalPages}
 			>
 				Next Page
 			</Button>
 		</div>
-  );
-}
+	);
+};
 
 export default PaginationBasic;
