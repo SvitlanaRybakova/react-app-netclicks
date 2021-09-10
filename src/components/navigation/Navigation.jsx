@@ -14,7 +14,7 @@ const Navigation = () => {
 	const [isOpenMenu, setOpenMenu] = useState(false);
 	const [isOpenRating, setOpenRating] = useState(false);
 	const [isOpenGenre, setOpenGenre] = useState(false);
-	const { data, error, isError, isLoading } = useQuery(
+	const { data, isError, isLoading } = useQuery(
 		["navigation"],
 		() => getGenreMovieList(),
 		{
@@ -23,87 +23,82 @@ const Navigation = () => {
 		}
 	);
 
-	if (data) {
-		console.log(data);
-	}
-	if(isError){
-		console.log("ERROR", error);
-	}
 	return (
 		<>
-			{data && (
+			<div
+				className={
+					isOpenMenu
+						? styles.leftMenu
+						: `${styles.leftMenu} ${styles.openMenu}`
+				}
+			>
 				<div
+					onClick={() => setOpenMenu(!isOpenMenu)}
 					className={
 						isOpenMenu
-							? styles.leftMenu
-							: `${styles.leftMenu} ${styles.openMenu}`
+							? `${styles.hamburger} ${styles.active}`
+							: ` ${styles.hamburger} ${styles.active} ${styles.open}`
 					}
 				>
-					<div
-						onClick={() => setOpenMenu(!isOpenMenu)}
-						className={
-							isOpenMenu
-								? `${styles.hamburger} ${styles.active}`
-								: ` ${styles.hamburger} ${styles.active} ${styles.open}`
-						}
-					>
-						<span></span>
-						<span></span>
-						<span></span>
-					</div>
-					<ul className={styles.leftMenu__list}>
-						<li>
-							<NavLink to="/">
-								<VscHome />
-								<span>HOME</span>
-							</NavLink>
-						</li>
-						<li>
-							<NavLink to="/history">
-								<VscHistory />
-								<span>HISTORY</span>
-							</NavLink>
-						</li>
-						<li>
-							<div
-								className={
-									isOpenRating
-										? styles.dropdown
-										: `${styles.dropdown} ${styles.active}`
-								}
-								onClick={() => {
-									setOpenRating(!isOpenRating);
-								}}
-							>
-								<GiTrophyCup />
-								<span>RATING</span>
-							</div>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<ul className={styles.leftMenu__list}>
+					<li>
+						<NavLink to="/">
+							<VscHome />
+							<span>HOME</span>
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/history">
+							<VscHistory />
+							<span>HISTORY</span>
+						</NavLink>
+					</li>
+					<li>
+						<div
+							className={
+								isOpenRating
+									? styles.dropdown
+									: `${styles.dropdown} ${styles.active}`
+							}
+							onClick={() => {
+								setOpenRating(!isOpenRating);
+							}}
+						>
+							<GiTrophyCup />
+							<span>RATING</span>
+						</div>
+						<ul className={styles.dropdownList}>
+							{ratingLinks.map((link) => (
+								<li key={uuidv4()}>
+									<NavLink to={link.link}>
+										<span>{link.name}</span>
+									</NavLink>
+								</li>
+							))}
+						</ul>
+					</li>
+					<li>
+						<div
+							className={
+								isOpenGenre
+									? styles.dropdown
+									: `${styles.dropdown} ${styles.active}`
+							}
+							onClick={() => {
+								setOpenGenre(!isOpenGenre);
+							}}
+						>
+							<FaTheaterMasks />
+							<span>GENRES</span>
+						</div>
+						{isError && <li> Request failed </li>}
+						{isLoading && <li>Loading...</li>}
+						{data && (
 							<ul className={styles.dropdownList}>
-								{ratingLinks.map((link) => (
-									<li key={uuidv4()}>
-										<NavLink to={link.link}>
-											<span>{link.name}</span>
-										</NavLink>
-									</li>
-								))}
-							</ul>
-						</li>
-						<li>
-							<div
-								className={
-									isOpenGenre
-										? styles.dropdown
-										: `${styles.dropdown} ${styles.active}`
-								}
-								onClick={() => {
-									setOpenGenre(!isOpenGenre);
-								}}
-							>
-								<FaTheaterMasks />
-								<span>GENRES</span>
-							</div>
-							<ul className={styles.dropdownList}>
-								{/* !!!!!! TODO update links depends on API */}
 								{data.genres.map((genre) => {
 									return (
 										<li key={genre.id}>
@@ -115,13 +110,11 @@ const Navigation = () => {
 										</li>
 									);
 								})}
-
-							
 							</ul>
-						</li>
-					</ul>
-				</div>
-			)}
+						)}
+					</li>
+				</ul>
+			</div>
 		</>
 	);
 };
