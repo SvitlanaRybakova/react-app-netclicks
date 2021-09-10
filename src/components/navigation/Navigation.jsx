@@ -4,104 +4,124 @@ import { v4 as uuidv4 } from "uuid";
 import { GiTrophyCup } from "react-icons/gi";
 import { FaTheaterMasks } from "react-icons/fa";
 import { VscHistory, VscHome } from "react-icons/vsc";
+import { useQuery } from "react-query";
 
 import { ratingLinks } from "../../constants/navLinks";
-
+import { getGenreMovieList } from "../../services/ThemoviedbAPI";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
 	const [isOpenMenu, setOpenMenu] = useState(false);
 	const [isOpenRating, setOpenRating] = useState(false);
 	const [isOpenGenre, setOpenGenre] = useState(false);
+	const { data, error, isError, isLoading } = useQuery(
+		["navigation"],
+		() => getGenreMovieList(),
+		{
+			staleTime: 1000 * 60 * 5, // 5 mins
+			cacheTime: 1000 * 60 * 30, // 30 mins
+		}
+	);
+
+	if (data) {
+		console.log(data);
+	}
+	if(isError){
+		console.log("ERROR", error);
+	}
 	return (
 		<>
-			<div
-				className={
-					isOpenMenu
-						? styles.leftMenu
-						: `${styles.leftMenu} ${styles.openMenu}`
-				}
-			>
+			{data && (
 				<div
-					onClick={() => setOpenMenu(!isOpenMenu)}
 					className={
 						isOpenMenu
-							? `${styles.hamburger} ${styles.active}`
-							: ` ${styles.hamburger} ${styles.active} ${styles.open}`
+							? styles.leftMenu
+							: `${styles.leftMenu} ${styles.openMenu}`
 					}
 				>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-				<ul className={styles.leftMenu__list}>
-					<li>
-						<NavLink to="/">
-							<VscHome />
-							<span>HOME</span>
-						</NavLink>
-					</li>
-					<li>
-						<NavLink to="/history">
-							<VscHistory />
-							<span>HISTORY</span>
-						</NavLink>
-					</li>
-					<li>
-						<div
-							className={
-								isOpenRating
-									? styles.dropdown
-									: `${styles.dropdown} ${styles.active}`
-							}
-							onClick={() => {
-								setOpenRating(!isOpenRating);
-							}}
-						>
-							<GiTrophyCup />
-							<span>RATING</span>
-						</div>
-						<ul className={styles.dropdownList}>
-							{ratingLinks.map((link) => (
-								<li key={uuidv4()}>
-									<NavLink to={link.link}>
-										<span>{link.name}</span>
-									</NavLink>
-								</li>
-							))}
-						</ul>
-					</li>
-					<li>
-						<div
-							className={
-								isOpenGenre
-									? styles.dropdown
-									: `${styles.dropdown} ${styles.active}`
-							}
-							onClick={() => {
-								setOpenGenre(!isOpenGenre);
-							}}
-						>
-							<FaTheaterMasks />
-							<span>GENRES</span>
-						</div>
-						<ul className={styles.dropdownList}>
-							{/* !!!!!! TODO update links depends on API */}
+					<div
+						onClick={() => setOpenMenu(!isOpenMenu)}
+						className={
+							isOpenMenu
+								? `${styles.hamburger} ${styles.active}`
+								: ` ${styles.hamburger} ${styles.active} ${styles.open}`
+						}
+					>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<ul className={styles.leftMenu__list}>
+						<li>
+							<NavLink to="/">
+								<VscHome />
+								<span>HOME</span>
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="/history">
+								<VscHistory />
+								<span>HISTORY</span>
+							</NavLink>
+						</li>
+						<li>
+							<div
+								className={
+									isOpenRating
+										? styles.dropdown
+										: `${styles.dropdown} ${styles.active}`
+								}
+								onClick={() => {
+									setOpenRating(!isOpenRating);
+								}}
+							>
+								<GiTrophyCup />
+								<span>RATING</span>
+							</div>
+							<ul className={styles.dropdownList}>
+								{ratingLinks.map((link) => (
+									<li key={uuidv4()}>
+										<NavLink to={link.link}>
+											<span>{link.name}</span>
+										</NavLink>
+									</li>
+								))}
+							</ul>
+						</li>
+						<li>
+							<div
+								className={
+									isOpenGenre
+										? styles.dropdown
+										: `${styles.dropdown} ${styles.active}`
+								}
+								onClick={() => {
+									setOpenGenre(!isOpenGenre);
+								}}
+							>
+								<FaTheaterMasks />
+								<span>GENRES</span>
+							</div>
+							<ul className={styles.dropdownList}>
+								{/* !!!!!! TODO update links depends on API */}
+								{data.genres.map((genre) => {
+									return (
+										<li key={genre.id}>
+											<NavLink
+												to={`/genres/${genre.name}`}
+											>
+												<span>{genre.name}</span>
+											</NavLink>
+										</li>
+									);
+								})}
 
-							<li>
-								<NavLink to="/genres/comedy">
-									<span>Comedy</span>
-								</NavLink>
-							</li>
-							{/* <li>
-								<NavLink to="/genres/drama">
-									<span>Drama</span>
-								</NavLink>
-							</li> */}
-						</ul>
-					</li>
-				</ul>
-			</div>
+							
+							</ul>
+						</li>
+					</ul>
+				</div>
+			)}
 		</>
 	);
 };

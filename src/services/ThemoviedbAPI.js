@@ -49,3 +49,12 @@ export const getPersonById = async (id) => {
 export const getRatedMovies = async (type, page = null) => {
 	return get(`/movie/${type}`, page);
 };
+
+export const getGenreMovieList = async() => {
+	const result = await axios.get(
+		`/genre/movie/list?api_key=${VITE_API_KEY}`
+	);
+	console.log(result);
+	return await result.data;
+	
+}
