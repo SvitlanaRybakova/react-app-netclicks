@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import StaffCard from "../cast_crew_card/StaffCard";
+import useLazyLoader from "../../../../hooks/useLazyLoad";
 
-const Cast = ({castData}) => {
-  return (
+const Cast = ({ castData }) => {
+	const { limit, ammountOfClick, onLoadMore } = useLazyLoader();
+
+	return (
 		<>
-			{castData.map(cast => (
+			{castData.slice(0, limit).map((cast) => (
 				<StaffCard
 					key={uuidv4()}
 					imagePath={cast.profile_path}
@@ -14,8 +17,14 @@ const Cast = ({castData}) => {
 					staff_id={cast.id}
 				/>
 			))}
+			<button
+				className={ammountOfClick === 0 ? "delete" : ""}
+				onClick={onLoadMore}
+			>
+				load more
+			</button>
 		</>
-  );
-}
+	);
+};
 
-export default Cast
+export default Cast;
