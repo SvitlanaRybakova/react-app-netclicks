@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { v4 as uuidv4 } from "uuid";
 
-import Title from "../../components/titel/Titel";
+import Title from "../../components/title/Title";
 import PageLayout from "../../components/layout/PageLayout";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
 import Pagination from "../../components/pagination/PaginationBasic";
@@ -30,7 +30,7 @@ const HomePage = () => {
 	useEffect(() => {
 		setTimeout(() => {
 			setQuery(searchText);
-			setCurrentPage(1)
+			setCurrentPage(1);
 		}, 1000);
 	}, [searchText]);
 
@@ -48,7 +48,7 @@ const HomePage = () => {
 					<section>
 						{data?.total_results === 0 && <NoMatches />}
 
-						<ul className={styles.tvShows__list}>
+						<ul className="tvShows__list">
 							{data.results.map((movie) => (
 								<MovieCard key={uuidv4()} movie={movie} />
 							))}

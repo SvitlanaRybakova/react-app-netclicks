@@ -48,9 +48,7 @@ const Navigation = () => {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink
-							exact
-							to="/rating"
+						<div
 							className={
 								isOpenRating
 									? styles.dropdown
@@ -62,7 +60,7 @@ const Navigation = () => {
 						>
 							<GiTrophyCup />
 							<span>RATING</span>
-						</NavLink>
+						</div>
 						<ul className={styles.dropdownList}>
 							{ratingLinks.map((link) => (
 								<li key={uuidv4()}>
@@ -74,9 +72,7 @@ const Navigation = () => {
 						</ul>
 					</li>
 					<li>
-						<NavLink
-							exact
-							to="/genres"
+						<div
 							className={
 								isOpenGenre
 									? styles.dropdown
@@ -88,7 +84,7 @@ const Navigation = () => {
 						>
 							<FaTheaterMasks />
 							<span>GENRES</span>
-						</NavLink>
+						</div>
 						<ul className={styles.dropdownList}>
 							{/* !!!!!! TODO update links depends on API */}
 

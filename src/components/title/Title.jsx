@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
-const Titel = ({ title="" }) => {
+const Title = ({ title="" }) => {
 	return (
 		<Helmet>
 			<title>Netclicks | {title}</title>
@@ -9,4 +9,4 @@ const Titel = ({ title="" }) => {
 	);
 };
 
-export default Titel;
+export default Title;

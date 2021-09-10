@@ -15,7 +15,7 @@ const get = async (endpoint, page, query) => {
 		);
 		return result.data;
 	}
-
+	// returns data with page for paginering
 	result = await axios.get(
 		`${endpoint}?api_key=${VITE_API_KEY}${language}&page=${page}`
 	);
@@ -31,8 +31,7 @@ const getById = async (endpoint) => {
 	return await result.data;
 };
 
-export const getMovie = async (page = null, query = "") => {
-	console.log("QUERY", query);
+export const getMovie = async (page = null, query = null) => {
 	if (query) {
 		return get(`/search/movie`, page, query);
 	}
@@ -45,4 +44,8 @@ export const getMovieById = async (id) => {
 
 export const getPersonById = async (id) => {
 	return getById(`/person/${id}`);
+};
+
+export const getRatedMovies = async (type, page = null) => {
+	return get(`/movie/${type}`, page);
 };

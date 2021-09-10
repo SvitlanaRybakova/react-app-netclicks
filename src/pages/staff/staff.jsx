@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Row, Col } from "react-bootstrap";
 
-import Title from "../../components/titel/Titel";
+import Title from "../../components/title/Title";
 import PageLayout from "../../components/layout/PageLayout";
 import BackButton from "../../components/back_button/BackButton";
 import DescriptionTemplate from "../../components/description_template/DescriptionTemplate";

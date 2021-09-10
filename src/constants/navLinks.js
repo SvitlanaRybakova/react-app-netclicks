@@ -2,7 +2,7 @@ export const ratingLinks = [
 	{
 		id: 1,
 		name: "Top rated",
-		link: "/rating/top-rated",
+		link: "/rating/top_rated",
 	},
 	{
 		id: 2,
@@ -11,7 +11,7 @@ export const ratingLinks = [
 	},
 	{
 		id: 3,
-		name: "The latest",
-		link: "/rating/last",
+		name: "Upcoming",
+		link: "/rating/upcoming",
 	},
 ];

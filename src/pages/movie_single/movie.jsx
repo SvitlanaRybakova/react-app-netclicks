@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 
-import Title from "../../components/titel/Titel";
+import Title from "../../components/title/Title";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
 import CompaniesLogo from "./page_components/companies_logo/CompaniesLogo";
 import Rating from "./page_components/rating_component/Rating";

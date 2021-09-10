@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Title from "../../components/titel/Titel";
+import Title from "../../components/title/Title";
 import PageLayout from "../../components/layout/PageLayout";
 
 const genres = () => {
