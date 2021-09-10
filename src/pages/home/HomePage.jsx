@@ -15,12 +15,12 @@ import { getMovie } from "../../services/ThemoviedbAPI";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
-	const [page, setPage] = useState(1);
+	const [currentPage, setCurrentPage] = useState(1);
 	const [searchText, setSearchText] = useState("");
 	const [query, setQuery] = useState(null);
 	const { data, error, isError, isLoading } = useQuery(
-		["home", page, query],
-		() => getMovie(page, query),
+		["home", currentPage, query],
+		() => getMovie(currentPage, query),
 		{
 			staleTime: 1000 * 60 * 5, // 5 mins
 			cacheTime: 1000 * 60 * 30, // 30 mins
@@ -32,10 +32,6 @@ const HomePage = () => {
 			setQuery(searchText);
 		}, 1000);
 	}, [searchText]);
-
-	if (data) {
-		console.log(data.total_results === 0);
-	}
 
 	return (
 		<>
@@ -55,8 +51,8 @@ const HomePage = () => {
 						</ul>
 					</section>
 					<Pagination
-						page={page}
-						setPage={setPage}
+						currentPage={currentPage}
+						setCurrentPage={setCurrentPage}
 						totalPages={data.total_pages}
 					/>
 				</PageLayout>
