@@ -31,7 +31,8 @@ const getById = async (endpoint) => {
 	return await result.data;
 };
 
-export const getMovie = async (page = null, query = null) => {
+export const getMovie = async (page = null, query = "") => {
+	console.log("QUERY", query);
 	if (query) {
 		return get(`/search/movie`, page, query);
 	}

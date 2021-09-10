@@ -30,6 +30,7 @@ const HomePage = () => {
 	useEffect(() => {
 		setTimeout(() => {
 			setQuery(searchText);
+			setCurrentPage(1)
 		}, 1000);
 	}, [searchText]);
 
@@ -40,7 +41,10 @@ const HomePage = () => {
 			{isLoading && <Spinner />}
 			{data?.results && (
 				<PageLayout>
-					<SearchBar setSearchText={setSearchText} />
+					<SearchBar
+						setSearchText={setSearchText}
+						searchText={searchText}
+					/>
 					<section>
 						{data?.total_results === 0 && <NoMatches />}
 

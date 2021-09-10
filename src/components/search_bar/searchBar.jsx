@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./searchBar.module.css";
 
-const searchBar = ({ setSearchText }) => {
+const searchBar = ({ setSearchText, searchText }) => {
 	return (
 		<div>
 			<div className={styles.headerFlex}>
@@ -25,6 +25,7 @@ const searchBar = ({ setSearchText }) => {
 							className={styles.search__formInput}
 							name="searchText"
 							placeholder="Enter a name..."
+							value={searchText}
 						/>
 						<label
 							className={styles.search__formBlock}
