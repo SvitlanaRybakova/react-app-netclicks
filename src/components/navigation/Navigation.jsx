@@ -71,7 +71,7 @@ const Navigation = () => {
 							<GiTrophyCup />
 							<span>RATING</span>
 						</div>
-						<ul className={styles.dropdownList}>
+						<ul className={styles.dropdownList_rating}>
 							{ratingLinks.map((link) => (
 								<li key={uuidv4()}>
 									<NavLink to={link.link}>
@@ -103,7 +103,7 @@ const Navigation = () => {
 									return (
 										<li key={genre.id}>
 											<NavLink
-												to={`/genres/${genre.name}`}
+												to={`/genres/${genre.name}/${genre.id}`}
 											>
 												<span>{genre.name}</span>
 											</NavLink>

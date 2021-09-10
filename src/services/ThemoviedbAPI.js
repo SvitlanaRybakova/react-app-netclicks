@@ -31,6 +31,7 @@ const getById = async (endpoint) => {
 	return await result.data;
 };
 
+// for searching, depends on query value
 export const getMovie = async (page = null, query = null) => {
 	if (query) {
 		return get(`/search/movie`, page, query);
@@ -50,11 +51,14 @@ export const getRatedMovies = async (type, page = null) => {
 	return get(`/movie/${type}`, page);
 };
 
-export const getGenreMovieList = async() => {
-	const result = await axios.get(
-		`/genre/movie/list?api_key=${VITE_API_KEY}`
-	);
-	console.log(result);
+export const getGenreMovieList = async () => {
+	const result = await axios.get(`/genre/movie/list?api_key=${VITE_API_KEY}`);
 	return await result.data;
-	
-}
+};
+
+export const getMoviesByGenre = async (id, page = null) => {
+	const result = await axios.get(
+		`/discover/movie?api_key=${VITE_API_KEY}&with_genres=${id}&page=${page}`
+	);
+	return await result.data;
+};

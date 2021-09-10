@@ -235,6 +235,16 @@
   position: relative;
 }
 
+.active+.dropdownList_rating {
+  width: 100%;
+  height: auto;
+  line-height: 30px;
+  padding: 0;
+  margin-left: 0;
+  background: #4DD0E1;
+  padding-left: 30px;
+}
+
 .active+.dropdownList {
   width: 100%;
   min-height: 200px;
@@ -266,7 +276,7 @@
   background: #00bcd6;
 }
 
-.dropdownList {
+.dropdownList, .dropdownList_rating {
   width: 0;
   height: 0;
   overflow: hidden;

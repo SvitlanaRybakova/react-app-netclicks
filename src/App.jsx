@@ -27,7 +27,7 @@ function App() {
 					<TopRatedPage />
 				</Route>
 
-				<Route path="/genres/:type">
+				<Route path="/genres/:type/:id">
 					<GenresPage />
 				</Route>
 
