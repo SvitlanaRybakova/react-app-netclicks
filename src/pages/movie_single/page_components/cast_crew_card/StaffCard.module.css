@@ -3,6 +3,7 @@
   align-items: center;
   margin-bottom: 35px;
   flex-basis: 100%;
+  border: 1px solid red;
 }
 
 @media(min-width: 768px) {
@@ -18,8 +19,8 @@
 }
 
 .cardImage {
-  width: 100px;
-  height: 100px;
+  width: 100px !important;
+  height: 100px !important;
   object-fit: cover;
   border-radius: 50%;
 }

@@ -1,21 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import noImage from "../../../assets/images/noImg.png";
-import { IMG_URL_185 } from "../../../constants/constants";
+
+import Image from "../../../components/image/Image";
 import styles from "./CastCard.module.css";
 
 const CastCard = ({ id, posterPath, title, character, department, job }) => {
 	return (
 		<Link to={`/movies/${id}`} className={styles.card}>
-			{posterPath ? (
-				<img
-					src={`${IMG_URL_185}${posterPath}`}
-					alt={title}
-					className={styles.cardImage}
-				/>
-			) : (
-				<img src={noImage} alt={title} className={styles.cardImage} />
-			)}
+			<Image poster={posterPath} className={styles.cardImage}/>
 			<div className={styles.cardWrapper}>
 				<h3 className={styles.cardName}>{title}</h3>
 				{character && (
