@@ -2,8 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Row, Col } from "react-bootstrap";
-import { Helmet } from "react-helmet";
 
+import Title from "../../components/titel/Titel";
 import PageLayout from "../../components/layout/PageLayout";
 import BackButton from "../../components/back_button/BackButton";
 import DescriptionTemplate from "../../components/description_template/DescriptionTemplate";
@@ -30,16 +30,14 @@ const staff = () => {
 
 	return (
 		<>
-			<Helmet>
-				<title>Netclicks | Person</title>
-			</Helmet>
+			<Title title={"Person"} />
 			{isError && <CustomErrorMessage error={error} />}
 			{isLoading && <Spinner />}
 			{data && (
 				<PageLayout>
 					<BackButton />
 					<Row className={styles.staffWrapper}>
-						<Col md={5}>
+						<Col md={4}>
 							{data.profile_path ? (
 								<img
 									src={`${IMG_URL_500}${data.profile_path}`}
@@ -58,7 +56,7 @@ const staff = () => {
 							<h1 className={styles.title}>{data.name}</h1>
 							<p className={styles.subtitle}>
 								{data.known_for_department},{" "}
-								{getAge(data.birthday)}years old
+								{getAge(data.birthday)} years old
 							</p>
 							<div className={styles.aboutPerson}>
 								<p className={styles.personDescriprion}>

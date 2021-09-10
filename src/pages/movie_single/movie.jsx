@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { Helmet } from "react-helmet";
 
+import Title from "../../components/titel/Titel";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
 import CompaniesLogo from "./page_components/companies_logo/CompaniesLogo";
 import Rating from "./page_components/rating_component/Rating";
@@ -30,9 +30,7 @@ const movie = () => {
 
 	return (
 		<>
-			<Helmet>
-				<title>Netclicks | Movie</title>
-			</Helmet>
+			<Title type={"Movie"} />
 			{isError && <CustomErrorMessage error={error} />}
 			{isLoading && <Spinner />}
 			{data && (

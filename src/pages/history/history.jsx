@@ -1,13 +1,11 @@
 import React from "react";
 import PageLayout from "../../components/layout/PageLayout";
-import { Helmet } from "react-helmet";
+import Title from "../../components/titel/Titel";
 
 const history = () => {
 	return (
 		<>
-			<Helmet>
-				<title>Netclicks | History</title>
-			</Helmet>
+			<Title title={"History"} />
 			<PageLayout>
 				<h1>History Page</h1>
 			</PageLayout>

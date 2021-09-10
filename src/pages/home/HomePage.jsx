@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { v4 as uuidv4 } from "uuid";
-import { Helmet } from "react-helmet";
 
+import Title from "../../components/titel/Titel";
 import PageLayout from "../../components/layout/PageLayout";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
 import Pagination from "../../components/pagination/PaginationBasic";
@@ -13,7 +13,6 @@ import MovieCard from "../../components/movie_card/MovieCard";
 
 import { getMovie } from "../../services/ThemoviedbAPI";
 import styles from "./HomePage.module.css";
-import { FaDivide } from "react-icons/fa";
 
 const HomePage = () => {
 	const [page, setPage] = useState(1);
@@ -40,9 +39,7 @@ const HomePage = () => {
 
 	return (
 		<>
-			<Helmet>
-				<title>Netclicks | Home</title>
-			</Helmet>
+			<Title title={"Home"} />
 			{isError && <CustomErrorMessage error={error} />}
 			{isLoading && <Spinner />}
 			{data?.results && (

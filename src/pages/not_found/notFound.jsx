@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 
+import Title from "../../components/titel/Titel"
 import styles from "./notFound.module.css";
 import PageLayout from "../../components/layout/PageLayout";
 import notFoundImage from "../../assets/images/notFound.png";
@@ -9,9 +9,7 @@ import notFoundImage from "../../assets/images/notFound.png";
 const notFound = () => {
 	return (
 		<>
-			<Helmet>
-				<title>Netclicks | Not Found</title>
-			</Helmet>
+		<Title title={"Not Found"}/>
 			<PageLayout>
 				<div className={styles.wrapper}>
 					<img src={notFoundImage} alt="page not found" />
