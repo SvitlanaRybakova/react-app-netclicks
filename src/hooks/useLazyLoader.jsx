@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 
-const LazyLoader = () => {
+const LazyLoader = (length) => {
 	const [limit, setLimit] = useState(6);
 
-	// TODO определяю количество кликов по кнопке, нужен контекст!
-	// const ammountOfClick =  Math.floor(castData.length / limit);
-  const ammountOfClick = 3
+	const ammountOfClick =  Math.floor(length / limit);
 
 	const onLoadMore = (e) => {
 		e.preventDefault();

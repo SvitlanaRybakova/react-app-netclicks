@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import StaffCard from "../cast_crew_card/StaffCard";
-import useLazyLoader from "../../../../hooks/useLazyLoad";
+import useLazyLoader from "../../../../hooks/useLazyLoader";
 
 const Cast = ({ castData }) => {
-	const { limit, ammountOfClick, onLoadMore } = useLazyLoader();
+	const { limit, ammountOfClick, onLoadMore } = useLazyLoader(
+		castData.length
+	);
 
 	return (
 		<>
@@ -17,12 +19,15 @@ const Cast = ({ castData }) => {
 					staff_id={cast.id}
 				/>
 			))}
-			<button
-				className={ammountOfClick === 0 ? "delete" : ""}
+			<div className="button-wrapper">
+					<button
+				className={ammountOfClick === 0 ? "delete" : "loadMore_btn"}
 				onClick={onLoadMore}
 			>
 				load more
 			</button>
+			</div>
+		
 		</>
 	);
 };

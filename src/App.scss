@@ -92,6 +92,23 @@ p {
 	justify-content: space-between;
 }
 
-.delete{
+.delete {
 	display: none;
+}
+
+.loadMore_btn {
+	border: 1px solid #00838f;
+	background-color: transparent;
+	color: #00838f;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 8px 55px;
+	border-radius: 8px;
+}
+
+.button-wrapper {
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }
