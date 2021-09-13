@@ -1,6 +1,8 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useParams, useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
+import { Col, Row } from "react-bootstrap";
 
 import Title from "../../components/title/Title";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
@@ -14,9 +16,10 @@ import Image from "../../components/image/Image";
 import Spinner from "../../components/spinner/Spinner";
 import { getMovieById } from "../../services/ThemoviedbAPI";
 import styles from "./movie.module.css";
-import { Col, Row } from "react-bootstrap";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const movie = () => {
+	let location = useLocation();
 	const { movie_id } = useParams();
 	const { data, error, isError, isLoading } = useQuery(
 		["single-movie", movie_id],
@@ -27,6 +30,12 @@ const movie = () => {
 			keepPreviousData: true, // keep previous data
 		}
 	);
+
+	const [storedValue, setValue] = useLocalStorage("watchedMovies", []);
+
+	useEffect(() => {
+		setValue({ id: uuidv4(), url: location.pathname });
+	}, [data]);
 
 	return (
 		<>
