@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { useParams, useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Col, Row } from "react-bootstrap";
@@ -19,7 +18,7 @@ import styles from "./movie.module.css";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 const movie = () => {
-	let location = useLocation();
+	const location = useLocation();
 	const { movie_id } = useParams();
 	const { data, error, isError, isLoading } = useQuery(
 		["single-movie", movie_id],
@@ -30,11 +29,11 @@ const movie = () => {
 			keepPreviousData: true, // keep previous data
 		}
 	);
-
+	
 	const [storedValue, setValue] = useLocalStorage("watchedMovies", []);
 
 	useEffect(() => {
-		setValue({ id: uuidv4(), url: location.pathname });
+		setValue({ id: movie_id, url: location.pathname });
 	}, [data]);
 
 	return (

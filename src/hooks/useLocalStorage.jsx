@@ -18,18 +18,32 @@ function useLocalStorage(key, initialValue) {
 	// Return a wrapped version of useState's setter function that ...
 	// ... persists the new value to localStorage.
 	const setValue = (value) => {
+	
 		try {
 			// Allow value to be a function so we have same API as useState
 			const valueToStore =
 				value instanceof Function ? value(storedValue) : value;
 
-				const updateState = [
-					...storedValue,
-					valueToStore
-				]
-			// Save state
-			setStoredValue(updateState);
+			// set first item to array
+			if (storedValue.length === 0) {
+				setStoredValue([valueToStore]);
+			}
 
+			// adding elements to array up to 10 item
+			if (storedValue.length > 0 && storedValue.length < 10) {
+				// updates state with previous data
+				const updateState = [...storedValue, valueToStore];
+				// Save state
+				setStoredValue(updateState);
+			}
+
+			// adding the last url to begining, delete last one from ending
+			if (storedValue.length === 10) {
+				storedValue.unshift(valueToStore);
+				storedValue.pop();
+				setStoredValue(storedValue);
+			}
+		
 			// Save to local storage
 			window.localStorage.setItem(key, JSON.stringify(storedValue));
 		} catch (error) {
