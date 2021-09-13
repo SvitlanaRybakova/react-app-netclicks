@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import CastCard from "./CastCard";
 import NoData from "../../../components/no_matches/NoMatches";
+import ButtonLoadMore from "../../../components/button_load_more/ButtonLoadMore";
 import useLazyLoader from "../../../hooks/useLazyLoader";
 
 const CastWrapper = ({ castData }) => {
@@ -29,14 +30,10 @@ const CastWrapper = ({ castData }) => {
 					<NoData />
 				</div>
 			)}
-			<div className="button-wrapper">
-				<button
-					className={ammountOfClick === 0 ? "delete" : "loadMore_btn"}
-					onClick={onLoadMore}
-				>
-					load more
-				</button>
-			</div>
+			<ButtonLoadMore
+				ammountOfClick={ammountOfClick}
+				onLoadMore={onLoadMore}
+			/>
 		</>
 	);
 };

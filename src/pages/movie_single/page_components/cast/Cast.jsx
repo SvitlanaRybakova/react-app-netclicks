@@ -2,6 +2,7 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import StaffCard from "../cast_crew_card/StaffCard";
+import ButtonLoadMore from "../../../../components/button_load_more/ButtonLoadMore";
 import useLazyLoader from "../../../../hooks/useLazyLoader";
 
 const Cast = ({ castData }) => {
@@ -19,15 +20,10 @@ const Cast = ({ castData }) => {
 					staff_id={cast.id}
 				/>
 			))}
-			<div className="button-wrapper">
-					<button
-				className={ammountOfClick === 0 ? "delete" : "loadMore_btn"}
-				onClick={onLoadMore}
-			>
-				load more
-			</button>
-			</div>
-		
+			<ButtonLoadMore
+				ammountOfClick={ammountOfClick}
+				onLoadMore={onLoadMore}
+			/>
 		</>
 	);
 };

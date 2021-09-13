@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import CastCard from "./CastCard";
+import ButtonLoadMore from "../../../components/button_load_more/ButtonLoadMore";
 import NoData from "../../../components/no_matches/NoMatches";
 import useLazyLoader from "../../../hooks/useLazyLoader";
 
@@ -29,14 +30,10 @@ const CrewWrapper = ({ crewData }) => {
 					<NoData />
 				</div>
 			)}
-			<div className="button-wrapper">
-				<button
-					className={ammountOfClick === 0 ? "delete" : "loadMore_btn"}
-					onClick={onLoadMore}
-				>
-					load more
-				</button>
-			</div>
+			<ButtonLoadMore
+				ammountOfClick={ammountOfClick}
+				onLoadMore={onLoadMore}
+			/>
 		</>
 	);
 };
