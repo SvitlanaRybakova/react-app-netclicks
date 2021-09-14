@@ -31,11 +31,26 @@ const getById = async (endpoint) => {
 	return await result.data;
 };
 
+const getGenre = async (endpoint, id, page) => {
+	let result
+	// get genre by id
+	if(id){
+		result = await axios.get(`
+		${endpoint}?api_key=${VITE_API_KEY}&with_genres=${id}&page=${page}`)
+	}
+	// get list with genres
+	else{
+		result = await axios.get(`${endpoint}?api_key=${VITE_API_KEY}`)
+	}
+	return await result.data
+} 
+
 // for searching, depends on query value
 export const getMovie = async (page = null, query = null) => {
 	if (query) {
 		return get(`/search/movie`, page, query);
 	}
+	// renders  now playing movie on the Home page
 	return get(`/movie/now_playing`, page);
 };
 
@@ -52,13 +67,9 @@ export const getRatedMovies = async (type, page = null) => {
 };
 
 export const getGenreMovieList = async () => {
-	const result = await axios.get(`/genre/movie/list?api_key=${VITE_API_KEY}`);
-	return await result.data;
+	return getGenre(`/genre/movie/list`)
 };
 
 export const getMoviesByGenre = async (id, page = null) => {
-	const result = await axios.get(
-		`/discover/movie?api_key=${VITE_API_KEY}&with_genres=${id}&page=${page}`
-	);
-	return await result.data;
+	return getGenre(`discover/movie`, id, page)
 };
