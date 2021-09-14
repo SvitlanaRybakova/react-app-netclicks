@@ -15,10 +15,10 @@ function useLocalStorage(key, initialValue) {
 			return initialValue;
 		}
 	});
+
 	// Return a wrapped version of useState's setter function that ...
 	// ... persists the new value to localStorage.
 	const setValue = (value) => {
-		
 		try {
 			// Allow value to be a function so we have same API as useState
 			const valueToStore =
@@ -37,15 +37,11 @@ function useLocalStorage(key, initialValue) {
 				setStoredValue(updateState);
 			}
 
-			// adding the last url to begining, delete last one from ending
+			// adding the last url to begining
 			if (storedValue.length >= 10) {
-			
 				let items = [...storedValue];
-				let item = { ...items[0] };
-				
 				items[0] = valueToStore;
-				setStoredValue(items)
-		
+				setStoredValue(items);
 			}
 
 			// Save to local storage
