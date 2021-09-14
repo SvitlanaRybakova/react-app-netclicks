@@ -33,6 +33,7 @@ const movie = () => {
 	const [storedValue, setValue] = useLocalStorage("watchedMovies", []);
 
 	useEffect(() => {
+		
 		setValue({ id: movie_id, url: location.pathname });
 	}, [data]);
 
