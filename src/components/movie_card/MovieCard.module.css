@@ -5,6 +5,7 @@
 
 .tvCard {
   position: relative;
+  cursor: pointer;
   max-width: 185px;
   min-height: 370px;
   margin: 0 auto;

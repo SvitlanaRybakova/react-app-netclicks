@@ -70,7 +70,7 @@ function PaginationBasic({ currentPage, setCurrentPage, totalPages }) {
 											? () => {}
 											: () => {
 													setCurrentPage(1);
-											  }
+											}
 									}
 								/>
 							);
@@ -85,7 +85,7 @@ function PaginationBasic({ currentPage, setCurrentPage, totalPages }) {
 													setCurrentPage(
 														currentPage - 1
 													);
-											  }
+											}
 									}
 								/>
 							);
@@ -105,7 +105,7 @@ function PaginationBasic({ currentPage, setCurrentPage, totalPages }) {
 											? () => {}
 											: () => {
 													setCurrentPage(element);
-											  }
+											}
 									}
 								>
 									{element}
@@ -123,7 +123,7 @@ function PaginationBasic({ currentPage, setCurrentPage, totalPages }) {
 													setCurrentPage(
 														currentPage + 1
 													);
-											  }
+											}
 									}
 								/>
 							);
@@ -136,7 +136,7 @@ function PaginationBasic({ currentPage, setCurrentPage, totalPages }) {
 											? () => {}
 											: () => {
 													setCurrentPage(element);
-											  }
+											}
 									}
 								/>
 							);

@@ -16,7 +16,7 @@ const history = () => {
 				{storedValue &&
 					storedValue.map((link, index) => (
 						<p className="m-3" key={link.id}>
-							<Link to={link.url}>Movie # {index} </Link>
+							<Link to={link.url}>Movie # {index+1} </Link>
 						</p>
 					))}
 			</PageLayout>
