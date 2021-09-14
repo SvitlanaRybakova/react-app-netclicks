@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { GiTrophyCup } from "react-icons/gi";
+import { IoTvSharp } from "react-icons/io5";
 import { FaTheaterMasks } from "react-icons/fa";
 import { VscHistory, VscHome } from "react-icons/vsc";
 import { useQuery } from "react-query";
 
 import { ratingLinks } from "../../constants/navLinks";
+import { episodes } from "../../constants/navLinks";
 import { getGenreMovieList } from "../../services/ThemoviedbAPI";
 import styles from "./Navigation.module.css";
 
@@ -57,6 +59,33 @@ const Navigation = () => {
 							<span>HISTORY</span>
 						</NavLink>
 					</li>
+					{/* tv */}
+					<li>
+						<div
+							className={
+								isOpenRating
+									? styles.dropdown
+									: `${styles.dropdown} ${styles.active}`
+							}
+							onClick={() => {
+								setOpenRating(!isOpenRating);
+							}}
+						>
+							<IoTvSharp />
+							<span>NEW EPISODES</span>
+						</div>
+						<ul className={styles.dropdownList_rating}>
+							{episodes.map((link) => (
+								<li key={uuidv4()}>
+									<NavLink to={link.link}>
+										<span>{link.name}</span>
+									</NavLink>
+								</li>
+							))}
+						</ul>
+					</li>
+					<li></li>
+					{/* /tv */}
 					<li>
 						<div
 							className={

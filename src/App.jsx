@@ -9,6 +9,7 @@ import GenresPage from "./pages/genres/genres";
 import HistoryPage from "./pages/history/history";
 import MoviePage from "./pages/movie_single/movie";
 import StaffPage from "./pages/staff/staff";
+import Episodes from './pages/episodes/Episodes';
 
 function App() {
 	return (
@@ -33,6 +34,10 @@ function App() {
 
 				<Route path="/staff/:staff_id">
 					<StaffPage />
+				</Route>
+
+				<Route path="/episodes/:type">
+					<Episodes />
 				</Route>
 
 				<Route path="/history">

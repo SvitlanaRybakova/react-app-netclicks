@@ -73,3 +73,12 @@ export const getGenreMovieList = async () => {
 export const getMoviesByGenre = async (id, page = null) => {
 	return getGenre(`discover/movie`, id, page)
 };
+
+export const getEpisodes =async (type, page=null) =>{
+	if (type === "today") {
+		return get(`/tv/airing_today`, page);
+	}
+	if (type === "week"){
+		return get(`/tv/on_the_air`, page);
+	}
+}

@@ -32,11 +32,19 @@ const [currentPage, setCurrentPage] = useState(1);
 			{isLoading && <Spinner />}
 			{data?.results && (
 				<PageLayout>
-					<h1 className="tvShows__head">{(type)} movies</h1>
+					<h1 className="tvShows__head">{type} movies</h1>
 					<section>
 						<ul className="tvShows__list">
 							{data.results.map((movie) => (
-								<MovieCard key={uuidv4()} movie={movie} />
+								<MovieCard
+									key={uuidv4()}
+									id={movie.id}
+									voteAverage={movie.vote_average}
+									backdrop={movie.backdrop_path}
+									poster={movie.poster_path}
+									movie={movie}
+									title={movie.title}
+								/>
 							))}
 						</ul>
 					</section>

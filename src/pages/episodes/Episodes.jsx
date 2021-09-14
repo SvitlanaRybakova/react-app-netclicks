@@ -1,53 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, {useState} from 'react'
 import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 import Title from "../../components/title/Title";
 import PageLayout from "../../components/layout/PageLayout";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
-import Pagination from "../../components/pagination/PaginationBasic";
-import SearchBar from "../../components/search_bar/searchBar";
-import NoMatches from "../../components/no_matches/NoMatches";
 import Spinner from "../../components/spinner/Spinner";
 import MovieCard from "../../components/movie_card/MovieCard";
+import Pagination from "../../components/pagination/PaginationBasic";
+import {getEpisodes} from "../../services/ThemoviedbAPI"
 
-import { getMovie } from "../../services/ThemoviedbAPI";
-import styles from "./HomePage.module.css";
+const Episodes = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const { type } = useParams();
 
-const HomePage = () => {
-	const [currentPage, setCurrentPage] = useState(1);
-	const [searchText, setSearchText] = useState("");
-	const [query, setQuery] = useState(null);
-	const { data, error, isError, isLoading } = useQuery(
-		["home", currentPage, query],
-		() => getMovie(currentPage, query),
+  const { data, error, isError, isLoading } = useQuery(
+		["episodes", type, currentPage],
+		() => getEpisodes(type, currentPage),
 		{
 			staleTime: 1000 * 60 * 5, // 5 mins
 			cacheTime: 1000 * 60 * 30, // 30 mins
 		}
-	);
+  );
 
-	useEffect(() => {
-		setTimeout(() => {
-			setQuery(searchText);
-			setCurrentPage(1);
-		}, 1000);
-	}, [searchText]);
-
-	return (
+  if(data){
+    console.log(data.results);
+  }
+  return (
 		<>
-			<Title title={"Home"} />
+			<Title title={type} />
 			{isError && <CustomErrorMessage error={error} />}
 			{isLoading && <Spinner />}
 			{data?.results && (
 				<PageLayout>
-					<SearchBar
-						setSearchText={setSearchText}
-						searchText={searchText}
-					/>
+					<h1 className="tvShows__head">Movies of the {type}</h1>
 					<section>
-						{data?.total_results === 0 && <NoMatches />}
-
 						<ul className="tvShows__list">
 							{data.results.map((movie) => (
 								<MovieCard
@@ -57,7 +45,7 @@ const HomePage = () => {
 									backdrop={movie.backdrop_path}
 									poster={movie.poster_path}
 									movie={movie}
-									title={movie.title}
+									title={movie.name}
 								/>
 							))}
 						</ul>
@@ -70,7 +58,7 @@ const HomePage = () => {
 				</PageLayout>
 			)}
 		</>
-	);
-};
+  );
+}
 
-export default HomePage;
+export default Episodes

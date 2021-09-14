@@ -15,3 +15,16 @@ export const ratingLinks = [
 		link: "/rating/upcoming",
 	},
 ];
+
+export const episodes = [
+	{
+		id: 4,
+		name: "Today",
+		link: "/episodes/today",
+	},
+	{
+		id: 5,
+		name: "During week",
+		link: "/episodes/week",
+	},
+];
