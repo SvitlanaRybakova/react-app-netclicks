@@ -1,15 +1,15 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useQuery } from "react-query";
-import { v4 as uuidv4 } from "uuid";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { v4 as uuidv4 } from 'uuid';
 
-import Title from "../../components/title/Title";
-import PageLayout from "../../components/layout/PageLayout";
-import BackButton from "../../components/back_button/BackButton";
-import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
-import Spinner from "../../components/spinner/Spinner";
-import MovieCard from "../../components/movie_card/MovieCard";
-import { getMoviesByGenre } from "../../services/ThemoviedbAPI";
+import Title from '../../components/title/Title';
+import PageLayout from '../../components/layout/PageLayout';
+import BackButton from '../../components/back_button/BackButton';
+import CustomErrorMessage from '../../components/error_message/CustomErrorMessage';
+import Spinner from '../../components/spinner/Spinner';
+import MovieCard from '../../components/movie_card/MovieCard';
+import { getMoviesByGenre } from '../../services/ThemoviedbAPI';
 
 const RelatedMovies = () => {
   const { genre } = useParams();
@@ -22,9 +22,7 @@ const RelatedMovies = () => {
 			cacheTime: 1000 * 60 * 30, // 30 mins
 		}
 	);
-  if(data){
-    console.log(data);
-  }
+  
 	return (
 		<>
 			<Title title={genre} />

@@ -36,9 +36,6 @@ const movie = () => {
 		setValue({ id: movie_id, url: location.pathname });
 	}, [data]);
 
-	if (data) {
-		console.log(data);
-	}
 	return (
 		<>
 			<Title type={"Movie"} />
