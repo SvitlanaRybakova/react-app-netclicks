@@ -41,7 +41,7 @@ function App() {
 					<EpisodesPage />
 				</Route>
 
-				<Route path="/related/:genre">
+				<Route path="/related/:movie_id">
 					<RelatedMoviesPage />
 				</Route>
 

@@ -9,14 +9,14 @@ import BackButton from '../../components/back_button/BackButton';
 import CustomErrorMessage from '../../components/error_message/CustomErrorMessage';
 import Spinner from '../../components/spinner/Spinner';
 import MovieCard from '../../components/movie_card/MovieCard';
-import { getMoviesByGenre } from '../../services/ThemoviedbAPI';
+import { getSimillarMovie } from "../../services/ThemoviedbAPI";
 
 const RelatedMovies = () => {
-  const { genre } = useParams();
+  const { movie_id } = useParams();
   
 	const { data, error, isError, isLoading } = useQuery(
-		["relatedMovies", genre],
-		() => getMoviesByGenre(genre),
+		["relatedMovies", movie_id],
+		() => getSimillarMovie(movie_id),
 		{
 			staleTime: 1000 * 60 * 5, // 5 mins
 			cacheTime: 1000 * 60 * 30, // 30 mins
@@ -25,7 +25,7 @@ const RelatedMovies = () => {
   
 	return (
 		<>
-			<Title title={genre} />
+			<Title title={movie_id} />
 			{isError && <CustomErrorMessage error={error} />}
 			{isLoading && <Spinner />}
 			{data?.results && (

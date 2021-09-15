@@ -1,6 +1,8 @@
 import React from "react";
-import styles from "./DescriptionTemplate.module.css";
 import { v4 as uuidv4 } from "uuid";
+
+import styles from "./DescriptionTemplate.module.css";
+import {showBudget} from "../../services/utils"
 
 const DescriptionTemplate = ({
 	title,
@@ -9,19 +11,7 @@ const DescriptionTemplate = ({
 	releaseDate,
 	birthPlace,
 }) => {
-	// show budget in friendly set
-	const showBudget = (budget) => {
-		const price = String(budget);
-		if (price.length % 3 == 0) {
-			return price
-				.split(/(\d{3})/)
-				.join(" ")
-				.trim();
-		} else {
-			//add a space as a separator in integers
-			return price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
-		}
-	};
+	
 
 	return (
 		<p>

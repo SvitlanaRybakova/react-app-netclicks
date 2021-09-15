@@ -8,3 +8,17 @@ export const getAge = (dateString) => {
 	}
 	return age;
 };
+
+// show budget in friendly set
+export const showBudget = (budget) => {
+	const price = String(budget);
+	if (price.length % 3 == 0) {
+		return price
+			.split(/(\d{3})/)
+			.join(" ")
+			.trim();
+	} else {
+		//add a space as a separator in integers
+		return price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+	}
+};

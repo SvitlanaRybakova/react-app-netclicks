@@ -6,7 +6,7 @@ const language = "&language=en-US";
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
 // for get films colection or search-resalt
-const get = async (endpoint, page, query) => {
+const get = async (endpoint, page = null, query) => {
 	let result;
 	// multi language search
 	if (query) {
@@ -32,18 +32,18 @@ const getById = async (endpoint) => {
 };
 
 const getGenre = async (endpoint, id, page) => {
-	let result
+	let result;
 	// get genre by id
-	if(id){
+	if (id) {
 		result = await axios.get(`
-		${endpoint}?api_key=${VITE_API_KEY}&with_genres=${id}&page=${page}`)
+		${endpoint}?api_key=${VITE_API_KEY}&with_genres=${id}&page=${page}`);
 	}
 	// get list with genres
-	else{
-		result = await axios.get(`${endpoint}?api_key=${VITE_API_KEY}`)
+	else {
+		result = await axios.get(`${endpoint}?api_key=${VITE_API_KEY}`);
 	}
-	return await result.data
-} 
+	return await result.data;
+};
 
 // for searching, depends on query value
 export const getMovie = async (page = null, query = null) => {
@@ -67,18 +67,26 @@ export const getRatedMovies = async (type, page = null) => {
 };
 
 export const getGenreMovieList = async () => {
-	return getGenre(`/genre/movie/list`)
+	return getGenre(`/genre/movie/list`);
 };
 
-export const getMoviesByGenre = async (id, page = null) => {
-	return getGenre(`discover/movie`, id, page)
+export const getMoviesByGenre = async (id, page) => {
+	return getGenre(`discover/movie`, id, page);
 };
 
-export const getEpisodes =async (type, page=null) =>{
+export const getEpisodes = async (type, page) => {
 	if (type === "today") {
 		return get(`/tv/airing_today`, page);
 	}
-	if (type === "week"){
+	if (type === "week") {
 		return get(`/tv/on_the_air`, page);
 	}
-}
+};
+
+export const getSimillarMovie = async (movie_id, page = 1) => {
+	return get(
+		`
+movie/${movie_id}/similar`,
+		page
+	);
+};

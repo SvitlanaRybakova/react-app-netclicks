@@ -97,11 +97,14 @@ const movie = () => {
 							/>
 						</Col>
 						{/* RELATED MOVIES */}
-						<div className={styles.relatedMovie}>
-							<Link to={`/related/${data.genres[0].id}`}>
+						
+							<div className={styles.relatedMovie}>
+							<Link to={`/related/${movie_id}`}>
 								Top 20 related movies
 							</Link>
 						</div>
+					
+						
 					</Row>
 
 					<CompaniesLogo companies={data.production_companies} />

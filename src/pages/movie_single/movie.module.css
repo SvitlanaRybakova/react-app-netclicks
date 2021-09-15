@@ -68,9 +68,9 @@
   color: #00838f;
   text-transform: uppercase;
   font-weight: bold;
-  margin: 30px;
   font-size: 1.2rem;
-  padding-top: 30px;
+  font-size: calc(18px + 5 *((100vw - 320px) / (1280 - 320)));
+  padding-top: 70px;
 }
 
 .relatedMovie a:hover {
