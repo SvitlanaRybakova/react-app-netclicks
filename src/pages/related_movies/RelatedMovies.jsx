@@ -1,37 +1,39 @@
-import React, {useState} from 'react'
-import { useQuery } from "react-query";
+import React from "react";
 import { useParams } from "react-router-dom";
+import { useQuery } from "react-query";
 import { v4 as uuidv4 } from "uuid";
 
 import Title from "../../components/title/Title";
 import PageLayout from "../../components/layout/PageLayout";
+import BackButton from "../../components/back_button/BackButton";
 import CustomErrorMessage from "../../components/error_message/CustomErrorMessage";
 import Spinner from "../../components/spinner/Spinner";
 import MovieCard from "../../components/movie_card/MovieCard";
-import Pagination from "../../components/pagination/PaginationBasic";
-import {getEpisodes} from "../../services/ThemoviedbAPI"
+import { getMoviesByGenre } from "../../services/ThemoviedbAPI";
 
-const Episodes = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const { type } = useParams();
-
-  const { data, error, isError, isLoading } = useQuery(
-		["episodes", type, currentPage],
-		() => getEpisodes(type, currentPage),
+const RelatedMovies = () => {
+  const { genre } = useParams();
+  
+	const { data, error, isError, isLoading } = useQuery(
+		["relatedMovies", genre],
+		() => getMoviesByGenre(genre),
 		{
 			staleTime: 1000 * 60 * 5, // 5 mins
 			cacheTime: 1000 * 60 * 30, // 30 mins
 		}
-  );
-
-  return (
+	);
+  if(data){
+    console.log(data);
+  }
+	return (
 		<>
-			<Title title={type} />
+			<Title title={genre} />
 			{isError && <CustomErrorMessage error={error} />}
 			{isLoading && <Spinner />}
 			{data?.results && (
 				<PageLayout>
-					<h1 className="tvShows__head">Movies of the {type}</h1>
+					<BackButton />
+					<h1 className="tvShows__head">Top 20 related movies</h1>
 					<section>
 						<ul className="tvShows__list">
 							{data.results.map((movie) => (
@@ -42,20 +44,15 @@ const Episodes = () => {
 									backdrop={movie.backdrop_path}
 									poster={movie.poster_path}
 									movie={movie}
-									title={movie.name}
+									title={movie.title}
 								/>
 							))}
 						</ul>
 					</section>
-					<Pagination
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
-						totalPages={data.total_pages}
-					/>
 				</PageLayout>
 			)}
 		</>
-  );
-}
+	);
+};
 
-export default Episodes
+export default RelatedMovies;

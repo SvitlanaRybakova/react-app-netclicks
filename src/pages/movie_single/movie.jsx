@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Col, Row } from "react-bootstrap";
 
@@ -29,13 +29,16 @@ const movie = () => {
 			keepPreviousData: true, // keep previous data
 		}
 	);
-	
+
 	const [storedValue, setValue] = useLocalStorage("watchedMovies", []);
 
 	useEffect(() => {
-			setValue({ id: movie_id, url: location.pathname });
+		setValue({ id: movie_id, url: location.pathname });
 	}, [data]);
 
+	if (data) {
+		console.log(data);
+	}
 	return (
 		<>
 			<Title type={"Movie"} />
@@ -70,6 +73,10 @@ const movie = () => {
 								/>
 
 								<DescriptionTemplate
+									title={"Genres:"}
+									items={data.genres}
+								/>
+								<DescriptionTemplate
 									title={"Country:"}
 									items={data.production_countries}
 								/>
@@ -92,6 +99,12 @@ const movie = () => {
 								voteCount={data.vote_count}
 							/>
 						</Col>
+						{/* RELATED MOVIES */}
+						<div className={styles.relatedMovie}>
+							<Link to={`/related/${data.genres[0].id}`}>
+								Top 20 related movies
+							</Link>
+						</div>
 					</Row>
 
 					<CompaniesLogo companies={data.production_companies} />

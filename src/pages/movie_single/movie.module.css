@@ -64,3 +64,17 @@
   text-transform: lowercase;
 }
 
+.relatedMovie {
+  color: #00838f;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 30px;
+  font-size: 1.2rem;
+  padding-top: 30px;
+}
+
+.relatedMovie a:hover {
+  color: #00838f;
+  border-bottom: 1px solid  #00838f;
+  ;
+}
