@@ -20,11 +20,11 @@ export const episodes = [
 	{
 		id: 4,
 		name: "Today",
-		link: "/episodes/today",
+		link: "/trending/day",
 	},
 	{
 		id: 5,
 		name: "During week",
-		link: "/episodes/week",
+		link: "/trending/week",
 	},
 ];

@@ -59,7 +59,7 @@ const Navigation = () => {
 							<span>HISTORY</span>
 						</NavLink>
 					</li>
-					{/* tv */}
+
 					<li>
 						<div
 							className={
@@ -72,7 +72,7 @@ const Navigation = () => {
 							}}
 						>
 							<IoTvSharp />
-							<span>NEW EPISODES</span>
+							<span>TRENDING</span>
 						</div>
 						<ul className={styles.dropdownList_rating}>
 							{episodes.map((link) => (
@@ -85,7 +85,7 @@ const Navigation = () => {
 						</ul>
 					</li>
 					<li></li>
-					{/* /tv */}
+
 					<li>
 						<div
 							className={

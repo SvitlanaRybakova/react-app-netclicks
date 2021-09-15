@@ -9,7 +9,7 @@ import CustomErrorMessage from "../../components/error_message/CustomErrorMessag
 import Spinner from "../../components/spinner/Spinner";
 import MovieCard from "../../components/movie_card/MovieCard";
 import Pagination from "../../components/pagination/PaginationBasic";
-import {getEpisodes} from "../../services/ThemoviedbAPI"
+import { getTrending } from "../../services/ThemoviedbAPI";
 
 const Episodes = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,7 +17,7 @@ const Episodes = () => {
 
   const { data, error, isError, isLoading } = useQuery(
 		["episodes", type, currentPage],
-		() => getEpisodes(type, currentPage),
+		() => getTrending(type, currentPage),
 		{
 			staleTime: 1000 * 60 * 5, // 5 mins
 			cacheTime: 1000 * 60 * 30, // 30 mins
@@ -42,7 +42,7 @@ const Episodes = () => {
 									backdrop={movie.backdrop_path}
 									poster={movie.poster_path}
 									movie={movie}
-									title={movie.name}
+									title={movie.title}
 								/>
 							))}
 						</ul>

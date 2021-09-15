@@ -9,7 +9,7 @@ import GenresPage from "./pages/genres/genres";
 import HistoryPage from "./pages/history/history";
 import MoviePage from "./pages/movie_single/movie";
 import StaffPage from "./pages/staff/staff";
-import EpisodesPage from "./pages/episodes/Episodes";
+import TrendingMoviePage from "./pages/trending_movies/TrendingMovies";
 import RelatedMoviesPage from "./pages/related_movies/RelatedMovies";
 
 function App() {
@@ -37,8 +37,8 @@ function App() {
 					<StaffPage />
 				</Route>
 
-				<Route path="/episodes/:type">
-					<EpisodesPage />
+				<Route path="/trending/:type">
+					<TrendingMoviePage />
 				</Route>
 
 				<Route path="/related/:movie_id">
