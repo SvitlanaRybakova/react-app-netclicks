@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useLocalStorage(key = "watchedMovies", initialValue=[]) {
+function useLocalStorage(key = "watchedMovies", initialValue = []) {
 	// State to store our value
 	// Pass initial state function to useState so logic is only executed once
 	const [storedValue, setStoredValue] = useState(() => {
@@ -39,9 +39,14 @@ function useLocalStorage(key = "watchedMovies", initialValue=[]) {
 
 			// adding the last url to begining
 			if (storedValue.length >= 10) {
-				let items = [...storedValue];
-				items[0] = valueToStore;
-				setStoredValue(items);
+				// delete the last one movies history when index === 9
+				setStoredValue((storedValue) =>
+					storedValue.filter(
+						(movie, index) => index !== storedValue.length - 1
+					)
+				);
+				// add the new history to the beginig of array
+				setStoredValue((preState) => [valueToStore, ...preState]);
 			}
 
 			// Save to local storage
