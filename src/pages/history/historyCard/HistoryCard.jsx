@@ -20,9 +20,6 @@ const HistoryCard = ({ id }) => {
 	);
   let history = useHistory();
   
-  if(data){
-    console.log(data);
-  }
 	return (
 		<>
 			{isError && <CustomErrorMessage error={error} />}
