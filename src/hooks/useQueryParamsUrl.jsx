@@ -10,14 +10,14 @@ const useQueryParamsUrl = () => {
 
 	// sets the same value to currentPage (as pageParams) if pageParam has been changed (by button back)
 	useEffect(() => {
-		if ( pageParam !== currentPage) {
+		if (pageParam && pageParam !== currentPage) {
 			setCurrentPage(pageParam);
 		}
 	}, [pageParam]);
 
 	// sets the same value to pageParams (as pageParams) if currentPage has been changed (by pagination)
 	useEffect(() => {
-		if (currentPage !== pageParam) {
+		if (currentPage && currentPage !== pageParam) {
 			setPageParam(currentPage);
 		}
 	}, [currentPage]);
