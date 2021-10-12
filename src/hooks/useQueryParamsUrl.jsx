@@ -28,8 +28,6 @@ const useQueryParamsUrl = () => {
   
 	useEffect(() => {
 	//if pageParam is undefined 
-	console.log("pageParam", pageParam);
-	console.log(location);
 		if (!pageParam) {
 			setPageParam(1);
 		} else {
