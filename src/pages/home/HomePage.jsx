@@ -13,11 +13,14 @@ import MovieCard from "../../components/movie_card/MovieCard";
 
 import { getMovie } from "../../services/ThemoviedbAPI";
 import styles from "./HomePage.module.css";
+import useQueryParamsUrl from '../../hooks/useQueryParamsUrl'
 
 const HomePage = () => {
-	const [currentPage, setCurrentPage] = useState(1);
+	// const [currentPage, setCurrentPage] = useState(1);
 	const [searchText, setSearchText] = useState("");
 	const [query, setQuery] = useState(null);
+	const {currentPage, setCurrentPage} = useQueryParamsUrl();
+	
 	const { data, error, isError, isLoading } = useQuery(
 		["home", currentPage, query],
 		() => getMovie(currentPage, query),
@@ -30,7 +33,7 @@ const HomePage = () => {
 	useEffect(() => {
 		setTimeout(() => {
 			setQuery(searchText);
-			setCurrentPage(1);
+			// setCurrentPage(1);
 		}, 1000);
 	}, [searchText]);
 
