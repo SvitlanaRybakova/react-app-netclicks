@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
@@ -10,11 +10,13 @@ import Spinner from "../../components/spinner/Spinner";
 import MovieCard from "../../components/movie_card/MovieCard";
 import Pagination from "../../components/pagination/PaginationBasic";
 import { getMoviesByGenre } from "../../services/ThemoviedbAPI";
+import useQueryParamsUrl from "../../hooks/useQueryParamsUrl";
 
 const genres = () => {
-const [currentPage, setCurrentPage] = useState(1);
+	const { currentPage, setCurrentPage } = useQueryParamsUrl();
+
 	const { type } = useParams();
-	const {id} =useParams();
+	const { id } = useParams();
 
 	const { data, error, isError, isLoading } = useQuery(
 		["genres", id, currentPage],

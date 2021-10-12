@@ -10,9 +10,10 @@ import Spinner from "../../components/spinner/Spinner";
 import MovieCard from "../../components/movie_card/MovieCard";
 import Pagination from "../../components/pagination/PaginationBasic";
 import { getTrending } from "../../services/ThemoviedbAPI";
+import useQueryParamsUrl from "../../hooks/useQueryParamsUrl";
 
 const Episodes = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const {currentPage, setCurrentPage} = useQueryParamsUrl();
   const { type } = useParams();
 
   const { data, error, isError, isLoading } = useQuery(
