@@ -16,10 +16,9 @@ import styles from "./HomePage.module.css";
 import useQueryParamsUrl from '../../hooks/useQueryParamsUrl'
 
 const HomePage = () => {
-	// const [currentPage, setCurrentPage] = useState(1);
 	const [searchText, setSearchText] = useState("");
 	const [query, setQuery] = useState(null);
-	const {currentPage, setCurrentPage} = useQueryParamsUrl();
+	const { currentPage, setCurrentPage, setQueryParam } = useQueryParamsUrl();
 	
 	const { data, error, isError, isLoading } = useQuery(
 		["home", currentPage, query],
@@ -31,9 +30,9 @@ const HomePage = () => {
 	);
 
 	useEffect(() => {
+		setQueryParam(searchText);
 		setTimeout(() => {
 			setQuery(searchText);
-			// setCurrentPage(1);
 		}, 1000);
 	}, [searchText]);
 
@@ -51,7 +50,7 @@ const HomePage = () => {
 					<section>
 						{data?.total_results === 0 && <NoMatches />}
 
-						<ul className="tvShows__list">
+						<ul className={styles.tvShows__list}>
 							{data.results.map((movie) => (
 								<MovieCard
 									key={uuidv4()}
