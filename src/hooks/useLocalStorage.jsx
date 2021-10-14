@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function useLocalStorage(key = "watchedMovies", initialValue = []) {
+	let isMovieInList = false
 	// State to store our value
 	// Pass initial state function to useState so logic is only executed once
 	const [storedValue, setStoredValue] = useState(() => {
@@ -16,6 +17,7 @@ function useLocalStorage(key = "watchedMovies", initialValue = []) {
 		}
 	});
 
+
 	// Return a wrapped version of useState's setter function that ...
 	// ... persists the new value to localStorage.
 	const setValue = (value) => {
@@ -29,8 +31,19 @@ function useLocalStorage(key = "watchedMovies", initialValue = []) {
 				setStoredValue([valueToStore]);
 			}
 
+			//check if movie already in the list
+			storedValue.forEach((movie) => {
+				if(movie.id === valueToStore.id){
+						isMovieInList = true;
+				}
+			});
+
 			// adding elements to array up to 10 item
-			if (storedValue.length > 0 && storedValue.length < 10) {
+			if (
+				storedValue.length > 0 &&
+				storedValue.length < 10 &&
+				!isMovieInList
+			) {
 				// updates state with previous data
 				const updateState = [...storedValue, valueToStore];
 				// Save state
@@ -38,7 +51,7 @@ function useLocalStorage(key = "watchedMovies", initialValue = []) {
 			}
 
 			// adding the last url to begining
-			if (storedValue.length >= 10) {
+			if (storedValue.length >= 10 && !isMovieInList) {
 				// delete the last one movies history when index === 9
 				setStoredValue((storedValue) =>
 					storedValue.filter(
