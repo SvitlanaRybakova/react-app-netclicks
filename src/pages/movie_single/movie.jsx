@@ -23,11 +23,6 @@ const movie = () => {
 	const { data, error, isError, isLoading } = useQuery(
 		["single-movie", movie_id],
 		() => getMovieById(movie_id),
-		{
-			staleTime: 1000 * 60 * 5, // 5 mins
-			cacheTime: 1000 * 60 * 30, // 30 mins
-			keepPreviousData: true, // keep previous data
-		}
 	);
 
 	const [storedValue, setValue] = useLocalStorage("watchedMovies", []);

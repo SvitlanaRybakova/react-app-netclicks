@@ -21,10 +21,6 @@ const genres = () => {
 	const { data, error, isError, isLoading } = useQuery(
 		["genres", id, currentPage],
 		() => getMoviesByGenre(id, currentPage),
-		{
-			staleTime: 1000 * 60 * 5, // 5 mins
-			cacheTime: 1000 * 60 * 30, // 30 mins
-		}
 	);
 
 	return (

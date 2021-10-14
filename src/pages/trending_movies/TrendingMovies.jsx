@@ -19,10 +19,6 @@ const Episodes = () => {
   const { data, error, isError, isLoading } = useQuery(
 		["episodes", type, currentPage],
 		() => getTrending(type, currentPage),
-		{
-			staleTime: 1000 * 60 * 5, // 5 mins
-			cacheTime: 1000 * 60 * 30, // 30 mins
-		}
   );
 
   return (

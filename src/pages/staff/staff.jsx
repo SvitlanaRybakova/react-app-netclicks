@@ -21,11 +21,6 @@ const staff = () => {
 	const { data, error, isError, isLoading } = useQuery(
 		["staff-page", staff_id],
 		() => getPersonById(staff_id),
-		{
-			staleTime: 1000 * 60 * 5, // 5 mins
-			cacheTime: 1000 * 60 * 30, // 30 mins
-			keepPreviousData: true, // keep previous data
-		}
 	);
 
 	return (
